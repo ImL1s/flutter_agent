@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_agent/src/action/action_registry.dart';
+import 'package:ai_flutter_agent/src/action/action_registry.dart';
 
 void main() {
   group('ActionRegistry', () {

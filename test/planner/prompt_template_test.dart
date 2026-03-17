@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:flutter_agent/flutter_agent.dart';
+import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
 class MockLLMClient extends Mock implements LLMClient {}
 

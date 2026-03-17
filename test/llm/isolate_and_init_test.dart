@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_agent/flutter_agent.dart';
-import 'package:flutter_agent/src/llm/isolate_llm_client.dart';
+import 'package:ai_flutter_agent/ai_flutter_agent.dart';
+import 'package:ai_flutter_agent/src/llm/isolate_llm_client.dart';
 
 /// Simple in-memory LLM client for testing.
 class FakeLLMClient implements LLMClient {

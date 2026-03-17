@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_agent/flutter_agent.dart';
+import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
 /// Example app demonstrating flutter_agent integration.
 ///

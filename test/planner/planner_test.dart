@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:flutter_agent/src/planner/planner.dart';
-import 'package:flutter_agent/src/llm/llm_client.dart';
-import 'package:flutter_agent/src/action/action_registry.dart';
-import 'package:flutter_agent/src/models/widget_descriptor.dart';
-import 'package:flutter_agent/src/models/action_descriptor.dart';
+import 'package:ai_flutter_agent/src/planner/planner.dart';
+import 'package:ai_flutter_agent/src/llm/llm_client.dart';
+import 'package:ai_flutter_agent/src/action/action_registry.dart';
+import 'package:ai_flutter_agent/src/models/widget_descriptor.dart';
+import 'package:ai_flutter_agent/src/models/action_descriptor.dart';
 
 class MockLLMClient extends Mock implements LLMClient {}
 

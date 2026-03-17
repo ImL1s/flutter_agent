@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_agent/src/audit/audit_log.dart';
+import 'package:ai_flutter_agent/src/audit/audit_log.dart';
 
 void main() {
   group('AuditLog', () {

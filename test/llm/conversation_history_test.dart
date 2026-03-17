@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_agent/flutter_agent.dart';
+import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
 // RED: This import will fail until we create the file
 // ignore: uri_does_not_exist
-import 'package:flutter_agent/src/llm/conversation_history.dart';
+import 'package:ai_flutter_agent/src/llm/conversation_history.dart';
 
 void main() {
   late ConversationHistory history;

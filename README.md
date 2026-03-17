@@ -65,7 +65,7 @@ flutter pub get
 ## Quick Start
 
 ```dart
-import 'package:flutter_agent/flutter_agent.dart';
+import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
 // 1. Wrap your app to enable Semantics
 runApp(

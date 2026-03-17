@@ -1,4 +1,4 @@
-name: flutter_agent_example
+name: ai_flutter_agent_example
 description: Example app demonstrating flutter_agent usage.
 publish_to: 'none'
 
@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_agent:
+  ai_flutter_agent:
     path: ../
 
 dev_dependencies:

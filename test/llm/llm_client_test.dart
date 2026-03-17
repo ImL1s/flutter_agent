@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-import 'package:flutter_agent/src/llm/openai_llm_client.dart';
+import 'package:ai_flutter_agent/src/llm/openai_llm_client.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 

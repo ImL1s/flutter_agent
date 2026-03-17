@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart' hide VerificationResult;
-import 'package:flutter_agent/flutter_agent.dart';
+import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
 class MockTreeWalker extends Mock implements SemanticTreeWalker {}
 class MockPlanner extends Mock implements Planner {}

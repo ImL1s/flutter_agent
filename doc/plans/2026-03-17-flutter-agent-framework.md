@@ -19,7 +19,7 @@
 Create the Dart package manifest:
 
 ```yaml
-name: flutter_agent
+name: ai_flutter_agent
 description: A Flutter package that lets LLMs operate app UIs via the Semantics tree.
 version: 0.1.0
 homepage: https://github.com/user/flutter_agent
@@ -58,7 +58,7 @@ linter:
 ```
 d:\OtherProject\mine\flutter_agent\
 ├── lib/
-│   ├── flutter_agent.dart          # barrel export
+│   ├── ai_flutter_agent.dart          # barrel export
 │   └── src/
 │       ├── models/
 │       │   ├── widget_descriptor.dart
@@ -799,7 +799,7 @@ class AuditLog {
 
 ### 12. Barrel Export
 
-#### [NEW] [flutter_agent.dart](file:///d:/OtherProject/mine/flutter_agent/lib/flutter_agent.dart)
+#### [NEW] [ai_flutter_agent.dart](file:///d:/OtherProject/mine/flutter_agent/lib/ai_flutter_agent.dart)
 
 ```dart
 library flutter_agent;

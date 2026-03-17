@@ -71,7 +71,7 @@ Uses `mocktail` for mocking. `SemanticTreeWalker` requires widget test environme
 
 ## Conventions
 
-- Barrel export at `lib/flutter_agent.dart` — all public API exported here
+- Barrel export at `lib/ai_flutter_agent.dart` — all public API exported here
 - `AgentConfig` gathered in one class with `copyWith` support
 - All executor actions logged to `AuditLog` (success and failure)
 - `WidgetDescriptor.toJson()` used for deterministic comparison in `Verifier`

@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_agent/flutter_agent.dart';
+import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
 // RED: file doesn't exist yet
 // ignore: uri_does_not_exist
-import 'package:flutter_agent/src/privacy/sensitive_data_masker.dart';
+import 'package:ai_flutter_agent/src/privacy/sensitive_data_masker.dart';
 
 void main() {
   late SensitiveDataMasker masker;

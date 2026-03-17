@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_agent/src/models/selector.dart';
+import 'package:ai_flutter_agent/src/models/selector.dart';
 
 void main() {
   group('Selector', () {

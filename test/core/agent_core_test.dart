@@ -1,14 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart' hide VerificationResult;
-import 'package:flutter_agent/src/core/agent_core.dart';
-import 'package:flutter_agent/src/core/agent_config.dart';
-import 'package:flutter_agent/src/core/agent_state.dart';
-import 'package:flutter_agent/src/semantic/semantic_tree_walker.dart';
-import 'package:flutter_agent/src/planner/planner.dart';
-import 'package:flutter_agent/src/executor/executor.dart';
-import 'package:flutter_agent/src/verifier/verifier.dart';
-import 'package:flutter_agent/src/models/widget_descriptor.dart';
-import 'package:flutter_agent/src/models/action_descriptor.dart';
+import 'package:ai_flutter_agent/src/core/agent_core.dart';
+import 'package:ai_flutter_agent/src/core/agent_config.dart';
+import 'package:ai_flutter_agent/src/core/agent_state.dart';
+import 'package:ai_flutter_agent/src/semantic/semantic_tree_walker.dart';
+import 'package:ai_flutter_agent/src/planner/planner.dart';
+import 'package:ai_flutter_agent/src/executor/executor.dart';
+import 'package:ai_flutter_agent/src/verifier/verifier.dart';
+import 'package:ai_flutter_agent/src/models/widget_descriptor.dart';
+import 'package:ai_flutter_agent/src/models/action_descriptor.dart';
 
 class MockSemanticTreeWalker extends Mock implements SemanticTreeWalker {}
 class MockPlanner extends Mock implements Planner {}

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_agent/src/models/widget_descriptor.dart';
+import 'package:ai_flutter_agent/src/models/widget_descriptor.dart';
 
 void main() {
   group('WidgetDescriptor', () {

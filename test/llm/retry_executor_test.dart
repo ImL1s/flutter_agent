@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 // RED: file doesn't exist yet
 // ignore: uri_does_not_exist
-import 'package:flutter_agent/src/llm/retry_executor.dart';
+import 'package:ai_flutter_agent/src/llm/retry_executor.dart';
 
 void main() {
   group('succeeds on first try', () {

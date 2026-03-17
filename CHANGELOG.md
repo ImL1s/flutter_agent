@@ -1,3 +1,13 @@
+## 0.1.3
+
+- **Fix:** Resolve "UI unchanged" error when toggling `Switch`, `Checkbox`, and other stateful widgets — `WidgetDescriptor` now captures `isToggled`, `isChecked`, and `isEnabled` states from `SemanticsFlag`.
+- **Fix:** `setText` action now automatically taps the target `TextField` first to ensure focus, fixing silent failures on unfocused text inputs.
+- **Improve:** `SemanticTreeWalker` explicitly advertises `setText` action for all `TextField` nodes.
+- **Improve:** `AgentCore` injects execution feedback into conversation history for better multi-turn LLM reasoning.
+- **Improve:** Post-action delay increased for reliable UI state settling before verification.
+- **Docs:** README rewrite with demo video and explanation of Semantics-tree approach vs screenshot-coordinate automation.
+- **Example:** Added 5 demo apps (Counter, Todo, Chat, Form, Shopping) in `example/` for testing all action types.
+
 ## 0.1.2
 
 - **Docs:** Updated `README.md` installation instructions to use `flutter pub add` instead of `git`, and added pub.dev version badge.

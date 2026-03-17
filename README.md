@@ -19,6 +19,49 @@
 
 ---
 
+## 🎬 Demo
+
+> An LLM autonomously operating a Todo app — adding items, typing text, and toggling checkboxes. **No coordinates. No pixel matching. Pure semantic understanding.**
+
+<p align="center">
+  <video src="https://github.com/ImL1s/flutter_agent/raw/master/assets/demo.mp4" width="300" controls autoplay muted loop>
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+<p align="center">
+  <em>The agent reads the Semantics tree, plans actions via LLM tool-calls, and executes them — all without knowing a single pixel coordinate.</em>
+</p>
+
+---
+
+## 🧠 This is NOT Screen-Coordinate Automation
+
+Most "AI agents" for mobile apps work by **taking a screenshot → asking an LLM to identify pixel coordinates → clicking those coordinates**. This approach is:
+
+- ❌ **Fragile** — a slight layout change breaks everything
+- ❌ **Slow** — sending full screenshots to vision models is expensive
+- ❌ **Resolution-dependent** — coordinates differ across devices
+- ❌ **Language-dependent** — visual OCR fails with different locales
+
+**`ai_flutter_agent` takes a fundamentally different approach:**
+
+- ✅ **Reads Flutter's Semantics tree directly** — the same accessibility tree used by screen readers
+- ✅ **Understands UI structure, not pixels** — knows that node #42 is a "checkbox" with label "Buy groceries", not "a blue square at (127, 340)"
+- ✅ **Resolution-independent** — works identically on any screen size or density
+- ✅ **Blazing fast** — sends a lightweight text tree to the LLM instead of a multi-MB screenshot
+- ✅ **Leverages existing accessibility annotations** — if your app is accessible, the agent can use it
+
+```
+📸 Screenshot approach:       🌳 Semantics approach (ours):
+"Click at (127, 340)"         "Tap node #42 (checkbox: Buy groceries)"
+"Type at (200, 100)"          "setText on node #15 (textField: New todo)"
+```
+
+> **Think of it this way:** other agents are *blind* — they see pixels. Our agent *reads* — it understands your UI.
+
+---
+
 ## What is ai_flutter_agent?
 
 `ai_flutter_agent` is a Dart/Flutter package that bridges **Large Language Models** and **Flutter UIs**. It captures the live Semantics tree, sends it to an LLM, executes the returned tool-call actions, and verifies the UI changed — all in an automated loop.
@@ -35,7 +78,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  ai_flutter_agent: ^0.1.1
+  ai_flutter_agent: ^0.1.3
 ```
 
 Or run:
@@ -162,28 +205,15 @@ final agent = AgentCore(
 );
 ```
 
-### Macro Recording
-
-```dart
-final recorder = MacroRecorder();
-recorder.record(const ActionDescriptor(actionName: 'tap', args: {'id': '1'}));
-recorder.record(const ActionDescriptor(actionName: 'setText', args: {'id': '2', 'text': 'hello'}));
-final macro = recorder.toMacro('Login Flow');
-
-// Serialize to JSON for storage
-final jsonString = MacroStore.serialize(macro);
-
-// Restore later
-final restored = MacroStore.deserialize(jsonString);
-```
-
 ### Local LLM Support
+
+Works with **any OpenAI-compatible endpoint** — LM Studio, Ollama, vLLM, etc.:
 
 ```dart
 final llm = OpenAILLMClient(
   apiKey: 'not-needed',
   model: 'your-local-model',
-  baseUrl: 'http://localhost:1234/v1', // LM Studio, Ollama, etc.
+  baseUrl: 'http://localhost:1234/v1',
 );
 ```
 

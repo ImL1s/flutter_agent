@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ImL1s/ai_flutter_agent/actions"><img src="https://img.shields.io/badge/tests-181%20passed-brightgreen" alt="Tests" /></a>
+  <a href="https://github.com/ImL1s/flutter_agent/actions"><img src="https://img.shields.io/badge/tests-181%20passed-brightgreen" alt="Tests" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-BSD--3--Clause-blue" alt="License" /></a>
   <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-%E2%89%A53.22-02569B?logo=flutter" alt="Flutter" /></a>
   <a href="https://dart.dev"><img src="https://img.shields.io/badge/Dart-%E2%89%A53.4-0175C2?logo=dart" alt="Dart" /></a>
@@ -36,7 +36,7 @@ Add to your `pubspec.yaml`:
 dependencies:
   ai_flutter_agent:
     git:
-      url: https://github.com/ImL1s/ai_flutter_agent.git
+      url: https://github.com/ImL1s/flutter_agent.git
 ```
 
 Then run:

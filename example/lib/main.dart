@@ -1,159 +1,141 @@
-import 'package:flutter/material.dart' hide ActionDispatcher;
+import 'package:flutter/material.dart';
 import 'package:ai_flutter_agent/ai_flutter_agent.dart';
+import 'demos/counter_demo.dart';
+import 'demos/todo_demo.dart';
+import 'demos/chat_demo.dart';
+import 'demos/form_demo.dart';
+import 'demos/shopping_demo.dart';
 
-/// Example app demonstrating ai_flutter_agent integration.
-///
-/// This counter app registers tap/increment actions and shows
-/// how to wire up AgentCore with a simple UI.
+/// Demo Hub — entry point for all AI Agent demo scenarios.
 void main() {
   runApp(
     const AgentOverlayWidget(
       enabled: true,
-      child: CounterApp(),
+      child: DemoApp(),
     ),
   );
 }
 
-class CounterApp extends StatelessWidget {
-  const CounterApp({super.key});
+class DemoApp extends StatelessWidget {
+  const DemoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Agent Demo',
+      title: 'Flutter Agent Demos',
       theme: ThemeData(
         colorSchemeSeed: Colors.deepPurple,
         useMaterial3: true,
       ),
-      home: const CounterPage(),
+      home: const DemoHubPage(),
     );
   }
 }
 
-class CounterPage extends StatefulWidget {
-  const CounterPage({super.key});
+class DemoHubPage extends StatelessWidget {
+  const DemoHubPage({super.key});
 
-  @override
-  State<CounterPage> createState() => _CounterPageState();
-}
-
-class _CounterPageState extends State<CounterPage> {
-  int _counter = 0;
-  String _agentStatus = 'Idle';
-
-  void _increment() => setState(() => _counter++);
-  void _decrement() => setState(() => _counter--);
+  static const _demos = <_DemoEntry>[
+    _DemoEntry(
+      title: 'Counter',
+      subtitle: 'Tap the + button 3 times',
+      icon: Icons.add_circle_outline,
+      actions: ['tap'],
+      page: CounterDemo(),
+    ),
+    _DemoEntry(
+      title: 'Todo List',
+      subtitle: 'Add todos, check them off',
+      icon: Icons.checklist,
+      actions: ['tap', 'setText'],
+      page: TodoDemo(),
+    ),
+    _DemoEntry(
+      title: 'Chat / IM',
+      subtitle: 'Type a message and send it',
+      icon: Icons.chat_bubble_outline,
+      actions: ['setText', 'tap'],
+      page: ChatDemo(),
+    ),
+    _DemoEntry(
+      title: 'Form / Settings',
+      subtitle: 'Fill fields, toggle switches, submit',
+      icon: Icons.settings,
+      actions: ['setText', 'tap'],
+      page: FormDemo(),
+    ),
+    _DemoEntry(
+      title: 'Shopping',
+      subtitle: 'Add items to cart, scroll to find',
+      icon: Icons.shopping_cart_outlined,
+      actions: ['tap', 'scrollDown'],
+      page: ShoppingDemo(),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Agent Demo')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Semantics(
-              label: 'Counter Value',
-              value: '$_counter',
-              child: Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.displayLarge,
+      appBar: AppBar(
+        title: const Text('AI Agent Demos'),
+        centerTitle: true,
+      ),
+      body: ListView.separated(
+        padding: const EdgeInsets.all(16),
+        itemCount: _demos.length,
+        separatorBuilder: (_, __) => const SizedBox(height: 8),
+        itemBuilder: (context, index) {
+          final demo = _demos[index];
+          return Card(
+            clipBehavior: Clip.antiAlias,
+            child: ListTile(
+              leading: CircleAvatar(
+                child: Icon(demo.icon),
+              ),
+              title: Text(demo.title),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(demo.subtitle),
+                  const SizedBox(height: 4),
+                  Wrap(
+                    spacing: 4,
+                    children: demo.actions
+                        .map((a) => Chip(
+                              label: Text(a),
+                              labelStyle: const TextStyle(fontSize: 10),
+                              padding: EdgeInsets.zero,
+                              visualDensity: VisualDensity.compact,
+                            ))
+                        .toList(),
+                  ),
+                ],
+              ),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => demo.page),
               ),
             ),
-            const SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Semantics(
-                  label: 'Decrement',
-                  button: true,
-                  child: FloatingActionButton(
-                    heroTag: 'decrement',
-                    onPressed: _decrement,
-                    child: const Icon(Icons.remove),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Semantics(
-                  label: 'Increment',
-                  button: true,
-                  child: FloatingActionButton(
-                    heroTag: 'increment',
-                    onPressed: _increment,
-                    child: const Icon(Icons.add),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            Text('Agent Status: $_agentStatus', textAlign: TextAlign.center, style: const TextStyle(color: Colors.red)),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: () {
-                print('--- BUTTON TAPPED ---');
-                _runAgent(context);
-              },
-              child: const Text('Run Agent: Increment 3 times'),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
+}
 
-  Future<void> _runAgent(BuildContext context) async {
-    print('--- _runAgent START ---');
-    // 1. Set up action registry with built-in actions
-    final registry = ActionRegistry();
-    BuiltInActions.registerDefaults(registry);
+class _DemoEntry {
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final List<String> actions;
+  final Widget page;
 
-    // 2. Create the real LLM client using the user-provided local server URL
-    // (Using 127.0.0.1 via adb reverse tcp:1234 tcp:1234 since it's a physical device)
-    final client = OpenAILLMClient(
-      apiKey: 'test-key',
-      baseUrl: 'http://127.0.0.1:1234/v1',
-      model: 'local-model', // Model name doesn't usually matter for LM Studio 
-    );
-
-    // 3. Create the agent components and the agent itself
-    final treeWalker = SemanticTreeWalker();
-    final auditLog = AuditLog();
-    final dispatcher = ActionDispatcher(registry: registry);
-
-    // 3. Create the planner to translate UI states into LLM prompts
-    final history = ConversationHistory(maxTurns: 10);
-    final planner = Planner(
-      llmClient: client, 
-      actionRegistry: registry,
-      conversationHistory: history,
-    );
-
-    final agent = AgentCore(
-      treeWalker: treeWalker,
-      planner: planner,
-      executor: Executor(actionRegistry: registry, auditLog: auditLog, actionDispatcher: dispatcher),
-      verifier: Verifier(treeWalker: treeWalker),
-      config: const AgentConfig(
-        maxSteps: 6,
-        stepDelay: Duration(seconds: 1),
-      ),
-    );
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Starting Agent: Please observe the UI...'),
-        duration: Duration(seconds: 3),
-      ),
-    );
-
-    try {
-      setState(() => _agentStatus = 'Running...');
-      // 4. Run the autonomous loop
-      await agent.run('Please click the Increment button 3 times exactly.');
-      
-      if (mounted) setState(() => _agentStatus = 'Success!');
-    } catch (e) {
-      if (mounted) setState(() => _agentStatus = 'Error: $e');
-    }
-  }
+  const _DemoEntry({
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+    required this.actions,
+    required this.page,
+  });
 }

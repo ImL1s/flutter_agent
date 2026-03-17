@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:flutter/widgets.dart';
 import '../semantic/semantic_tree_walker.dart';
 import '../planner/planner.dart';
 import '../executor/executor.dart';
@@ -76,10 +78,6 @@ class AgentCore {
       for (var i = 0; i < config.maxSteps; i++) {
         if (_state.status != AgentStatus.running) break;
 
-        if (config.debugMode) {
-          print('[AgentCore] Step ${i + 1}/${config.maxSteps}');
-        }
-
         _callbacks?.onStepStart?.call(i + 1, config.maxSteps);
 
         // 1. Perceive — capture current UI state
@@ -97,18 +95,22 @@ class AgentCore {
         }
 
         // 2. Plan — ask LLM what to do
+        if (config.debugMode) {
+          print('[AgentCore] Step ${i + 1}: UI before = ${jsonEncode(uiState.toJson())}');
+        }
         final actions = await _planner.plan(uiState: uiState, task: task);
+
         if (actions.isEmpty) {
-          if (config.debugMode) {
-            print('[AgentCore] LLM returned no actions — task complete.');
-          }
           _state.status = AgentStatus.completed;
+          if (config.debugMode) {
+            print('[AgentCore] Step ${i + 1}: LLM returned no actions — task completed.');
+          }
           break;
         }
-
         if (config.debugMode) {
-          print('[AgentCore] LLM returned ${actions.length} action(s): '
-              '${actions.map((a) => a.actionName).join(", ")}');
+          for (final a in actions) {
+            print('[AgentCore] Step ${i + 1}: action=${a.actionName} args=${a.args}');
+          }
         }
 
         // 2.5. Consent — ask user before executing
@@ -124,10 +126,54 @@ class AgentCore {
         }
 
         // 3. Execute — run the actions
-        await _executor.executeAll(actions);
+        final results = await _executor.executeAll(actions);
+
+        // Check if any action actually succeeded
+        final allFailed = results.every((r) => !r.success);
+
+        if (config.debugMode) {
+          for (final r in results) {
+            print('[AgentCore] Step ${i + 1}: execution result: '
+                '${r.action.actionName} success=${r.success}'
+                '${r.error != null ? " error=${r.error}" : ""}');
+          }
+        }
+
+        // If all actions failed, don't count as "unchanged" — the actions
+        // themselves didn't work, so there's nothing to verify.
+        if (allFailed) {
+          _state.stepCount++;
+          unchangedCount++;
+          final failMsg = results.map((r) => '${r.action.actionName}: ${r.error}').join('; ');
+          _state.lastError = 'All actions failed: $failMsg (attempt $unchangedCount/${config.maxRetries})';
+          if (config.debugMode) {
+            print('[AgentCore] ${_state.lastError}');
+          }
+          if (unchangedCount >= config.maxRetries) {
+            _state.status = AgentStatus.error;
+            break;
+          }
+          // Add failure feedback to conversation history so LLM can adapt
+          _planner.conversationHistory?.addUserMessage(
+            'FEEDBACK: The previous actions all failed. Errors: $failMsg. '
+            'Please re-analyze the UI and try different actions or node IDs.',
+          );
+          await Future.delayed(config.stepDelay);
+          continue;
+        }
+
+        // Wait for Flutter to pump frames so setState rebuilds propagate
+        // to the semantics tree.
+        await WidgetsBinding.instance.endOfFrame;
+        await WidgetsBinding.instance.endOfFrame;
+        await WidgetsBinding.instance.endOfFrame;
+        await Future.delayed(const Duration(milliseconds: 500));
 
         // 4. Verify — did the UI change?
         final postState = _treeWalker.capture();
+        if (config.debugMode) {
+          print('[AgentCore] Step ${i + 1}: UI after = ${jsonEncode(postState?.toJson())}');
+        }
         final verification = _verifier.verify(
           before: uiState,
           after: postState,
@@ -142,12 +188,31 @@ class AgentCore {
           if (config.debugMode) {
             print('[AgentCore] ${_state.lastError}');
           }
+          // Tell the LLM the UI didn't change so it can try a different approach
+          _planner.conversationHistory?.addUserMessage(
+            'FEEDBACK: The UI did not change after executing the actions. '
+            'The actions may have targeted wrong nodes, or the task step '
+            'was already completed. Please re-analyze the current UI state '
+            'and decide the next action, or respond with no tool calls if '
+            'the task is fully complete.',
+          );
           if (unchangedCount >= config.maxRetries) {
             _state.status = AgentStatus.error;
             break;
           }
         } else {
           unchangedCount = 0; // reset on successful change
+          // Tell the LLM the action worked
+          if (_planner.conversationHistory != null) {
+            final successNames = results
+                .where((r) => r.success)
+                .map((r) => r.action.actionName)
+                .join(', ');
+            _planner.conversationHistory!.addUserMessage(
+              'FEEDBACK: UI changed successfully after executing: $successNames. '
+              'Continue with the next step of the task, or respond with no tool calls if done.',
+            );
+          }
         }
 
         // Delay between steps to let UI settle

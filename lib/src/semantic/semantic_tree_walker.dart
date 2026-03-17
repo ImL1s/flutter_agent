@@ -35,6 +35,26 @@ class SemanticTreeWalker {
       }
     }
 
+    // Explicitly add 'setText' to text fields so the LLM knows it can type here
+    if (data.hasFlag(SemanticsFlag.isTextField) && !actionNames.contains('setText')) {
+      actionNames.add('setText');
+    }
+
+    // Capture toggle / checkbox / enabled states
+    bool? isToggled;
+    bool? isChecked;
+    bool? isEnabled;
+
+    if (data.hasFlag(SemanticsFlag.hasToggledState)) {
+      isToggled = data.hasFlag(SemanticsFlag.isToggled);
+    }
+    if (data.hasFlag(SemanticsFlag.hasCheckedState)) {
+      isChecked = data.hasFlag(SemanticsFlag.isChecked);
+    }
+    if (data.hasFlag(SemanticsFlag.hasEnabledState)) {
+      isEnabled = data.hasFlag(SemanticsFlag.isEnabled);
+    }
+
     return WidgetDescriptor(
       id: node.id.toString(),
       role: _inferRole(data),
@@ -43,6 +63,9 @@ class SemanticTreeWalker {
       value: data.value,
       actions: actionNames,
       children: _getChildren(node).map(_walk).toList(),
+      isToggled: isToggled,
+      isChecked: isChecked,
+      isEnabled: isEnabled,
     );
   }
 

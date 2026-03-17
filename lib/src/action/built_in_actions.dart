@@ -31,7 +31,7 @@ class BuiltInActions {
   /// `SemanticsOwner.performAction()`. In tests, provide a mock.
   static void registerDefaults(
     ActionRegistry registry, {
-    Future<void> Function(int nodeId, SemanticsAction action)? performAction,
+    Future<void> Function(int nodeId, SemanticsAction action, {Object? actionArgs})? performAction,
   }) {
     // Register semantics-based actions
     for (final entry in actionMap.entries) {
@@ -52,9 +52,13 @@ class BuiltInActions {
       'setText',
       (args) async {
         final nodeId = int.parse(args['id'].toString());
-        // text is available in args['text'] for the performAction handler
+        final text = args['text'] as String? ?? '';
         if (performAction != null) {
-          await performAction(nodeId, SemanticsAction.setText);
+          // Flutter TextFields require focus to accept setText via semantic actions.
+          // We automatically tap the node first to ensure it's focused before injecting text.
+          await performAction(nodeId, SemanticsAction.tap);
+          await Future.delayed(const Duration(milliseconds: 100)); // wait for focus
+          await performAction(nodeId, SemanticsAction.setText, actionArgs: text);
         }
       },
       description: 'Set text content of an input field.',

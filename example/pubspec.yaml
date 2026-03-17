@@ -9,7 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  ai_flutter_agent: ^0.1.2
+  ai_flutter_agent:
+    path: ../
 
 dev_dependencies:
   flutter_test:

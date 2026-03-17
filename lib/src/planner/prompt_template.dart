@@ -45,6 +45,9 @@ Analyze the UI state and use the available tools to accomplish the task. Be prec
     buf.write('$prefix- [${node.role}] id=${node.id} label="${node.label}"');
     if (node.value.isNotEmpty) buf.write(' value="${node.value}"');
     if (node.hint.isNotEmpty) buf.write(' hint="${node.hint}"');
+    if (node.isToggled != null) buf.write(' toggled=${node.isToggled}');
+    if (node.isChecked != null) buf.write(' checked=${node.isChecked}');
+    if (node.isEnabled != null) buf.write(' enabled=${node.isEnabled}');
     if (node.actions.isNotEmpty) buf.write(' actions=${node.actions}');
     buf.writeln();
     for (final child in node.children) {

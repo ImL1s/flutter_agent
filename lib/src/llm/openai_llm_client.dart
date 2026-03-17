@@ -35,9 +35,15 @@ class OpenAILLMClient implements LLMClient {
     required this.apiKey,
     this.model = 'gpt-4o',
     this.baseUrl = 'https://api.openai.com/v1',
-    this.systemPrompt = 'You are a UI automation agent. '
-        'Analyze the current UI state and return tool calls to interact with the app. '
-        'Only use the provided tools. Be precise with node IDs.',
+    this.systemPrompt = 'You are a UI automation agent that controls a Flutter app via semantics actions. '
+        'Rules: '
+        '1) Analyze the Current UI state tree. Each node has an id, role, label, value, and available actions. '
+        '2) Perform ONE action per step using the provided tools. Use the exact node ID from the UI tree. '
+        '3) For setText, you must first target the correct text field node ID, then provide the text. '
+        '4) After each action, the UI state will update. Re-analyze and continue. '
+        '5) When the task is FULLY COMPLETE, respond with plain text (no tool calls) to signal completion. '
+        '6) If an action did not change the UI, try a different node ID or approach. '
+        'Be precise with node IDs — use the id values shown in the UI tree.',
     http.Client? httpClient,
   }) : _httpClient = httpClient ?? http.Client();
 
@@ -66,7 +72,7 @@ class OpenAILLMClient implements LLMClient {
     }
 
     final body = jsonEncode(requestBody);
-
+    
     final response = await _httpClient.post(
       Uri.parse('$baseUrl/chat/completions'),
       headers: {
@@ -74,8 +80,10 @@ class OpenAILLMClient implements LLMClient {
         'Authorization': 'Bearer $apiKey',
       },
       body: body,
-    );
-
+    ).timeout(const Duration(seconds: 30), onTimeout: () {
+      throw LLMException('HTTP Request to $baseUrl timed out after 30 seconds.');
+    });
+    
     if (response.statusCode != 200) {
       throw LLMException(
         'OpenAI API error ${response.statusCode}: ${response.body}',
@@ -107,8 +115,8 @@ class OpenAILLMClient implements LLMClient {
     final message = choices.first['message'] as Map<String, dynamic>;
     final toolCalls = message['tool_calls'] as List?;
     if (toolCalls == null || toolCalls.isEmpty) {
-      final content = message['content'];
-      throw LLMException('LLM returned no tool_calls. Assistant said: $content');
+      // LLM returned text instead of tool_calls — treat as task completion
+      return [];
     }
 
     return toolCalls.map((tc) {

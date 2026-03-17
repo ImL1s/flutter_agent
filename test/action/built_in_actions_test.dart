@@ -45,7 +45,7 @@ void main() {
 
       BuiltInActions.registerDefaults(
         registry,
-        performAction: (nodeId, action) async {
+        performAction: (nodeId, action, {Object? actionArgs}) async {
           capturedId = nodeId;
           captured = action;
         },
@@ -63,7 +63,7 @@ void main() {
 
       BuiltInActions.registerDefaults(
         registry,
-        performAction: (_, action) async => captured = action,
+        performAction: (_, action, {Object? actionArgs}) async => captured = action,
       );
 
       await registry.execute('longPress', {'id': '1'});

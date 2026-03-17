@@ -90,11 +90,13 @@ class VerificationDetail {
     List<String> added,
     List<String> removed,
   ) {
-    // Check if this node's properties changed
     if (before.label != after.label ||
         before.value != after.value ||
         before.role != after.role ||
-        before.hint != after.hint) {
+        before.hint != after.hint ||
+        before.isToggled != after.isToggled ||
+        before.isChecked != after.isChecked ||
+        before.isEnabled != after.isEnabled) {
       changed.add(after.id);
     }
 

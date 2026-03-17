@@ -24,7 +24,7 @@
 > An LLM autonomously operating a Todo app — adding items, typing text, and toggling checkboxes. **No coordinates. No pixel matching. Pure semantic understanding.**
 
 <p align="center">
-  <img src="assets/demo.gif" width="300" alt="AI Agent operating a Todo app" />
+  <img src="assets/demo.gif" width="600" alt="AI Agent operating a Todo app" />
 </p>
 
 <p align="center">

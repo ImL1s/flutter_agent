@@ -3,7 +3,6 @@ import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
 // RED: file doesn't exist yet
 // ignore: uri_does_not_exist
-import 'package:ai_flutter_agent/src/action/action_dispatcher.dart';
 
 void main() {
   late ActionDispatcher dispatcher;
@@ -38,7 +37,7 @@ void main() {
       'value': {'type': 'string', 'description': 'Value'},
     });
 
-    tree = WidgetDescriptor(
+    tree = const WidgetDescriptor(
       id: '1', label: 'Root', role: 'generic',
       children: [
         WidgetDescriptor(
@@ -66,7 +65,7 @@ void main() {
 
   group('tap dispatch', () {
     test('dispatches tap to resolved node', () async {
-      final action = ActionDescriptor(
+      final action = const ActionDescriptor(
         actionName: 'tap', args: {'id': '2'},
       );
       final result = await dispatcher.dispatch(action, tree);
@@ -77,7 +76,7 @@ void main() {
 
   group('enterText dispatch', () {
     test('dispatches enterText with value', () async {
-      final action = ActionDescriptor(
+      final action = const ActionDescriptor(
         actionName: 'enterText', args: {'id': '3', 'text': 'hello'},
       );
       final result = await dispatcher.dispatch(action, tree);
@@ -88,7 +87,7 @@ void main() {
 
   group('node not found', () {
     test('returns false when node not found', () async {
-      final action = ActionDescriptor(
+      final action = const ActionDescriptor(
         actionName: 'tap', args: {'id': '999'},
       );
       final result = await dispatcher.dispatch(action, tree);
@@ -99,7 +98,7 @@ void main() {
 
   group('unregistered action', () {
     test('returns false for unregistered action', () async {
-      final action = ActionDescriptor(
+      final action = const ActionDescriptor(
         actionName: 'delete', args: {'id': '2'},
       );
       final result = await dispatcher.dispatch(action, tree);
@@ -109,7 +108,7 @@ void main() {
 
   group('setValue dispatch', () {
     test('handles setValue for slider', () async {
-      final action = ActionDescriptor(
+      final action = const ActionDescriptor(
         actionName: 'setValue', args: {'id': '5', 'value': '80'},
       );
       final result = await dispatcher.dispatch(action, tree);
@@ -120,7 +119,7 @@ void main() {
 
   group('scroll dispatch', () {
     test('handles scroll with direction', () async {
-      final action = ActionDescriptor(
+      final action = const ActionDescriptor(
         actionName: 'scroll', args: {'id': '4', 'direction': 'down'},
       );
       final result = await dispatcher.dispatch(action, tree);
@@ -130,7 +129,7 @@ void main() {
   });
   group('lastError reporting', () {
     test('lastError populated on unregistered action', () async {
-      final action = ActionDescriptor(
+      final action = const ActionDescriptor(
         actionName: 'delete', args: {'id': '2'},
       );
       await dispatcher.dispatch(action, tree);
@@ -138,7 +137,7 @@ void main() {
     });
 
     test('lastError populated when node not found', () async {
-      final action = ActionDescriptor(
+      final action = const ActionDescriptor(
         actionName: 'tap', args: {'id': '999'},
       );
       await dispatcher.dispatch(action, tree);
@@ -146,7 +145,7 @@ void main() {
     });
 
     test('lastError is null on success', () async {
-      final action = ActionDescriptor(
+      final action = const ActionDescriptor(
         actionName: 'tap', args: {'id': '2'},
       );
       await dispatcher.dispatch(action, tree);

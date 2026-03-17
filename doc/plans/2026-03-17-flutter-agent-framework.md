@@ -14,7 +14,7 @@
 
 ### 1. Project Scaffolding
 
-#### [NEW] [pubspec.yaml](file:///d:/OtherProject/mine/flutter_agent/pubspec.yaml)
+#### [NEW] [pubspec.yaml](file:///d:/OtherProject/mine/ai_flutter_agent/pubspec.yaml)
 
 Create the Dart package manifest:
 
@@ -22,7 +22,7 @@ Create the Dart package manifest:
 name: ai_flutter_agent
 description: A Flutter package that lets LLMs operate app UIs via the Semantics tree.
 version: 0.1.0
-homepage: https://github.com/user/flutter_agent
+homepage: https://github.com/user/ai_flutter_agent
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
@@ -41,7 +41,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 ```
 
-#### [NEW] [analysis_options.yaml](file:///d:/OtherProject/mine/flutter_agent/analysis_options.yaml)
+#### [NEW] [analysis_options.yaml](file:///d:/OtherProject/mine/ai_flutter_agent/analysis_options.yaml)
 
 ```yaml
 include: package:flutter_lints/flutter.yaml
@@ -56,7 +56,7 @@ linter:
 #### [NEW] Directory structure
 
 ```
-d:\OtherProject\mine\flutter_agent\
+d:\OtherProject\mine\ai_flutter_agent\
 ├── lib/
 │   ├── ai_flutter_agent.dart          # barrel export
 │   └── src/
@@ -115,7 +115,7 @@ d:\OtherProject\mine\flutter_agent\
 
 ### 2. Data Models
 
-#### [NEW] [widget_descriptor.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/models/widget_descriptor.dart)
+#### [NEW] [widget_descriptor.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/models/widget_descriptor.dart)
 
 ```dart
 /// Represents a single node in the UI semantics tree.
@@ -153,7 +153,7 @@ class WidgetDescriptor {
 }
 ```
 
-#### [NEW] [action_descriptor.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/models/action_descriptor.dart)
+#### [NEW] [action_descriptor.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/models/action_descriptor.dart)
 
 ```dart
 /// Describes an action the LLM wants to execute on the UI.
@@ -183,7 +183,7 @@ class ActionDescriptor {
 }
 ```
 
-#### [NEW] [selector.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/models/selector.dart)
+#### [NEW] [selector.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/models/selector.dart)
 
 ```dart
 /// Strategy for locating a target SemanticsNode.
@@ -209,15 +209,15 @@ class Selector {
 }
 ```
 
-#### [NEW] [widget_descriptor_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/models/widget_descriptor_test.dart)
-#### [NEW] [action_descriptor_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/models/action_descriptor_test.dart)
-#### [NEW] [selector_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/models/selector_test.dart)
+#### [NEW] [widget_descriptor_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/models/widget_descriptor_test.dart)
+#### [NEW] [action_descriptor_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/models/action_descriptor_test.dart)
+#### [NEW] [selector_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/models/selector_test.dart)
 
 ---
 
 ### 3. Semantic Tree Walker
 
-#### [NEW] [semantic_tree_walker.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/semantic/semantic_tree_walker.dart)
+#### [NEW] [semantic_tree_walker.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/semantic/semantic_tree_walker.dart)
 
 Traverses Flutter's live `SemanticsNode` tree and produces `WidgetDescriptor` data:
 
@@ -280,7 +280,7 @@ class SemanticTreeWalker {
 }
 ```
 
-#### [NEW] [semantic_tree_walker_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/semantic/semantic_tree_walker_test.dart)
+#### [NEW] [semantic_tree_walker_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/semantic/semantic_tree_walker_test.dart)
 
 Uses a widget test with `Semantics`-annotated widgets to verify the walker.
 
@@ -288,7 +288,7 @@ Uses a widget test with `Semantics`-annotated widgets to verify the walker.
 
 ### 4. Action Registry
 
-#### [NEW] [action_registry.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/action/action_registry.dart)
+#### [NEW] [action_registry.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/action/action_registry.dart)
 
 ```dart
 typedef ActionFunction = Future<void> Function(Map<String, dynamic> args);
@@ -348,13 +348,13 @@ class UnregisteredActionException implements Exception {
 }
 ```
 
-#### [NEW] [action_registry_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/action/action_registry_test.dart)
+#### [NEW] [action_registry_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/action/action_registry_test.dart)
 
 ---
 
 ### 5. LLM Client Abstraction
 
-#### [NEW] [llm_client.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/llm/llm_client.dart)
+#### [NEW] [llm_client.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/llm/llm_client.dart)
 
 ```dart
 import '../models/action_descriptor.dart';
@@ -369,7 +369,7 @@ abstract class LLMClient {
 }
 ```
 
-#### [NEW] [openai_llm_client.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/llm/openai_llm_client.dart)
+#### [NEW] [openai_llm_client.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/llm/openai_llm_client.dart)
 
 ```dart
 import 'dart:convert';
@@ -440,7 +440,7 @@ class LLMException implements Exception {
 }
 ```
 
-#### [NEW] [llm_client_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/llm/llm_client_test.dart)
+#### [NEW] [llm_client_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/llm/llm_client_test.dart)
 
 Uses `mocktail` to mock `http.Client`, verifying request format and response parsing.
 
@@ -448,7 +448,7 @@ Uses `mocktail` to mock `http.Client`, verifying request format and response par
 
 ### 6. Planner
 
-#### [NEW] [planner.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/planner/planner.dart)
+#### [NEW] [planner.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/planner/planner.dart)
 
 ```dart
 import '../models/widget_descriptor.dart';
@@ -500,13 +500,13 @@ Respond with tool calls to accomplish the task.''';
 }
 ```
 
-#### [NEW] [planner_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/planner/planner_test.dart)
+#### [NEW] [planner_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/planner/planner_test.dart)
 
 ---
 
 ### 7. Executor
 
-#### [NEW] [executor.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/executor/executor.dart)
+#### [NEW] [executor.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/executor/executor.dart)
 
 ```dart
 import '../models/action_descriptor.dart';
@@ -557,13 +557,13 @@ class ExecutionResult {
 }
 ```
 
-#### [NEW] [executor_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/executor/executor_test.dart)
+#### [NEW] [executor_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/executor/executor_test.dart)
 
 ---
 
 ### 8. Verifier
 
-#### [NEW] [verifier.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/verifier/verifier.dart)
+#### [NEW] [verifier.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/verifier/verifier.dart)
 
 ```dart
 import '../models/widget_descriptor.dart';
@@ -600,13 +600,13 @@ class Verifier {
 }
 ```
 
-#### [NEW] [verifier_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/verifier/verifier_test.dart)
+#### [NEW] [verifier_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/verifier/verifier_test.dart)
 
 ---
 
 ### 9. AgentCore (Main Orchestrator)
 
-#### [NEW] [agent_state.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/core/agent_state.dart)
+#### [NEW] [agent_state.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/core/agent_state.dart)
 
 ```dart
 enum AgentStatus { idle, running, paused, completed, error }
@@ -620,7 +620,7 @@ class AgentState {
 }
 ```
 
-#### [NEW] [agent_core.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/core/agent_core.dart)
+#### [NEW] [agent_core.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/core/agent_core.dart)
 
 ```dart
 import '../models/widget_descriptor.dart';
@@ -713,13 +713,13 @@ class AgentCore {
 }
 ```
 
-#### [NEW] [agent_core_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/core/agent_core_test.dart)
+#### [NEW] [agent_core_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/core/agent_core_test.dart)
 
 ---
 
 ### 10. AgentConfig
 
-#### [NEW] [agent_config.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/core/agent_config.dart)
+#### [NEW] [agent_config.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/core/agent_config.dart)
 
 ```dart
 class AgentConfig {
@@ -741,7 +741,7 @@ class AgentConfig {
 
 ### 11. Audit Log
 
-#### [NEW] [audit_log.dart](file:///d:/OtherProject/mine/flutter_agent/lib/src/audit/audit_log.dart)
+#### [NEW] [audit_log.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/src/audit/audit_log.dart)
 
 ```dart
 class AuditEntry {
@@ -793,16 +793,16 @@ class AuditLog {
 }
 ```
 
-#### [NEW] [audit_log_test.dart](file:///d:/OtherProject/mine/flutter_agent/test/audit/audit_log_test.dart)
+#### [NEW] [audit_log_test.dart](file:///d:/OtherProject/mine/ai_flutter_agent/test/audit/audit_log_test.dart)
 
 ---
 
 ### 12. Barrel Export
 
-#### [NEW] [ai_flutter_agent.dart](file:///d:/OtherProject/mine/flutter_agent/lib/ai_flutter_agent.dart)
+#### [NEW] [ai_flutter_agent.dart](file:///d:/OtherProject/mine/ai_flutter_agent/lib/ai_flutter_agent.dart)
 
 ```dart
-library flutter_agent;
+library ai_flutter_agent;
 
 // Models
 export 'src/models/widget_descriptor.dart';
@@ -829,7 +829,7 @@ export 'src/audit/audit_log.dart';
 
 ### 13. Example App
 
-#### [NEW] [example/lib/main.dart](file:///d:/OtherProject/mine/flutter_agent/example/lib/main.dart)
+#### [NEW] [example/lib/main.dart](file:///d:/OtherProject/mine/ai_flutter_agent/example/lib/main.dart)
 
 Minimal demo showing how to integrate the agent with a simple form UI.
 
@@ -839,7 +839,7 @@ Minimal demo showing how to integrate the agent with a simple form UI.
 
 ### Automated Tests
 
-All commands run from `d:\OtherProject\mine\flutter_agent`:
+All commands run from `d:\OtherProject\mine\ai_flutter_agent`:
 
 ```bash
 # Run all unit tests

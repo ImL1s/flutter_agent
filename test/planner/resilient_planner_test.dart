@@ -31,7 +31,7 @@ void main() {
       final planner = Planner(
         llmClient: mockLLM,
         actionRegistry: registry,
-        retryExecutor: RetryExecutor(
+        retryExecutor: const RetryExecutor(
           maxAttempts: 3,
           initialDelay: Duration.zero,
         ),
@@ -54,7 +54,7 @@ void main() {
       final planner = Planner(
         llmClient: mockLLM,
         actionRegistry: registry,
-        retryExecutor: RetryExecutor(
+        retryExecutor: const RetryExecutor(
           maxAttempts: 2,
           initialDelay: Duration.zero,
         ),

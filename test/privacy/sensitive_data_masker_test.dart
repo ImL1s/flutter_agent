@@ -3,7 +3,6 @@ import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
 // RED: file doesn't exist yet
 // ignore: uri_does_not_exist
-import 'package:ai_flutter_agent/src/privacy/sensitive_data_masker.dart';
 
 void main() {
   late SensitiveDataMasker masker;
@@ -14,7 +13,7 @@ void main() {
 
   group('email masking', () {
     test('masks email addresses in labels', () {
-      final node = WidgetDescriptor(
+      final node = const WidgetDescriptor(
         id: '1', label: 'Email: john@example.com', role: 'textField',
       );
       final masked = masker.mask(node);
@@ -23,7 +22,7 @@ void main() {
     });
 
     test('masks email in value field', () {
-      final node = WidgetDescriptor(
+      final node = const WidgetDescriptor(
         id: '1', label: 'Email', role: 'textField',
         value: 'user@test.org',
       );
@@ -34,7 +33,7 @@ void main() {
 
   group('phone masking', () {
     test('masks phone numbers in values', () {
-      final node = WidgetDescriptor(
+      final node = const WidgetDescriptor(
         id: '1', label: 'Phone', role: 'textField',
         value: '+1-555-123-4567',
       );
@@ -46,7 +45,7 @@ void main() {
 
   group('credit card masking', () {
     test('masks credit card numbers', () {
-      final node = WidgetDescriptor(
+      final node = const WidgetDescriptor(
         id: '1', label: 'Card', role: 'textField',
         value: '4111-1111-1111-1111',
       );
@@ -57,7 +56,7 @@ void main() {
 
   group('non-sensitive content', () {
     test('preserves non-sensitive content', () {
-      final node = WidgetDescriptor(
+      final node = const WidgetDescriptor(
         id: '1', label: 'Submit', role: 'button',
         actions: ['tap'],
       );
@@ -71,7 +70,7 @@ void main() {
 
   group('recursive masking', () {
     test('masks recursively in children', () {
-      final tree = WidgetDescriptor(
+      final tree = const WidgetDescriptor(
         id: '1', label: 'Form', role: 'generic',
         children: [
           WidgetDescriptor(
@@ -94,7 +93,7 @@ void main() {
 
   group('immutability', () {
     test('returns new tree, does not mutate original', () {
-      final original = WidgetDescriptor(
+      final original = const WidgetDescriptor(
         id: '1', label: 'test@email.com', role: 'textField',
       );
       final masked = masker.mask(original);
@@ -108,7 +107,7 @@ void main() {
       final customMasker = SensitiveDataMasker(
         extraPatterns: [RegExp(r'SSN-\d{3}-\d{2}-\d{4}')],
       );
-      final node = WidgetDescriptor(
+      final node = const WidgetDescriptor(
         id: '1', label: 'ID: SSN-123-45-6789', role: 'generic',
       );
       final masked = customMasker.mask(node);

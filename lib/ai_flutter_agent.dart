@@ -1,4 +1,4 @@
-library flutter_agent;
+library;
 
 // Models
 export 'src/models/widget_descriptor.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ai_flutter_agent/ai_flutter_agent.dart';
-import 'package:ai_flutter_agent/src/llm/streaming_llm_client.dart';
 
 /// Concrete test implementation of StreamingLLMClient.
 class TestStreamingClient extends StreamingLLMClient {

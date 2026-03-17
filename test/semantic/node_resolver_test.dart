@@ -7,7 +7,7 @@ void main() {
   late WidgetDescriptor tree;
 
   setUp(() {
-    tree = WidgetDescriptor(
+    tree = const WidgetDescriptor(
       id: '1',
       label: 'Root',
       role: 'generic',

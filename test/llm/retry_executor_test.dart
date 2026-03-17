@@ -7,7 +7,7 @@ import 'package:ai_flutter_agent/src/llm/retry_executor.dart';
 void main() {
   group('succeeds on first try', () {
     test('returns result without retry', () async {
-      final executor = RetryExecutor(maxAttempts: 3);
+      final executor = const RetryExecutor(maxAttempts: 3);
       final result = await executor.execute(() async => 'hello');
       expect(result, 'hello');
     });
@@ -16,7 +16,7 @@ void main() {
   group('retries on failure', () {
     test('retries and succeeds on second attempt', () async {
       int attempts = 0;
-      final executor = RetryExecutor(
+      final executor = const RetryExecutor(
         maxAttempts: 3,
         initialDelay: Duration.zero, // no delay for tests
       );
@@ -31,7 +31,7 @@ void main() {
 
     test('retries and succeeds on third attempt', () async {
       int attempts = 0;
-      final executor = RetryExecutor(
+      final executor = const RetryExecutor(
         maxAttempts: 3,
         initialDelay: Duration.zero,
       );
@@ -47,7 +47,7 @@ void main() {
 
   group('exhausted retries', () {
     test('throws after maxAttempts exhausted', () async {
-      final executor = RetryExecutor(
+      final executor = const RetryExecutor(
         maxAttempts: 2,
         initialDelay: Duration.zero,
       );
@@ -79,9 +79,9 @@ void main() {
 
   group('backoff behavior', () {
     test('applies delay between retries', () async {
-      final executor = RetryExecutor(
+      final executor = const RetryExecutor(
         maxAttempts: 2,
-        initialDelay: const Duration(milliseconds: 50),
+        initialDelay: Duration(milliseconds: 50),
         backoffMultiplier: 2.0,
       );
       int attempts = 0;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
-/// Example app demonstrating flutter_agent integration.
+/// Example app demonstrating ai_flutter_agent integration.
 ///
 /// This counter app registers tap/increment actions and shows
 /// how to wire up AgentCore with a simple UI.

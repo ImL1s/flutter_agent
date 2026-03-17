@@ -26,7 +26,7 @@ cd example && flutter run
 
 ## Architecture
 
-`flutter_agent` is a Flutter package that lets LLMs operate app UIs via the Semantics tree. The agent runs a **perceive → plan → execute → verify** loop in `AgentCore`.
+`ai_flutter_agent` is a Flutter package that lets LLMs operate app UIs via the Semantics tree. The agent runs a **perceive → plan → execute → verify** loop in `AgentCore`.
 
 ### Pipeline
 

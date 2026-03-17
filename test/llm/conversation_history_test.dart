@@ -3,7 +3,6 @@ import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
 // RED: This import will fail until we create the file
 // ignore: uri_does_not_exist
-import 'package:ai_flutter_agent/src/llm/conversation_history.dart';
 
 void main() {
   late ConversationHistory history;
@@ -32,7 +31,7 @@ void main() {
   group('addAssistantToolCalls', () {
     test('adds assistant tool calls in OpenAI format', () {
       final actions = [
-        ActionDescriptor(
+        const ActionDescriptor(
           actionName: 'enterText',
           args: {'id': '2', 'text': 'hello'},
         ),
@@ -50,7 +49,7 @@ void main() {
 
     test('includes arguments as JSON string', () {
       final actions = [
-        ActionDescriptor(
+        const ActionDescriptor(
           actionName: 'tap',
           args: {'id': '5'},
         ),
@@ -77,7 +76,7 @@ void main() {
     test('toMessages returns messages in order', () {
       history.addUserMessage('Tap Login');
       history.addAssistantToolCalls([
-        ActionDescriptor(actionName: 'tap', args: {'id': '2'}),
+        const ActionDescriptor(actionName: 'tap', args: {'id': '2'}),
       ]);
       history.addToolResult('call_1', 'OK');
       history.addUserMessage('Now enter password');
@@ -120,11 +119,11 @@ void main() {
   group('tool call ID uniqueness', () {
     test('IDs are unique across multiple addAssistantToolCalls calls', () {
       history.addAssistantToolCalls([
-        ActionDescriptor(actionName: 'tap', args: {'id': '1'}),
-        ActionDescriptor(actionName: 'tap', args: {'id': '2'}),
+        const ActionDescriptor(actionName: 'tap', args: {'id': '1'}),
+        const ActionDescriptor(actionName: 'tap', args: {'id': '2'}),
       ]);
       history.addAssistantToolCalls([
-        ActionDescriptor(actionName: 'tap', args: {'id': '3'}),
+        const ActionDescriptor(actionName: 'tap', args: {'id': '3'}),
       ]);
 
       final messages = history.toMessages();

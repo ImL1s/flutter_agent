@@ -1,3 +1,7 @@
+## 0.1.2
+
+- **Docs:** Updated `README.md` installation instructions to use `flutter pub add` instead of `git`, and added pub.dev version badge.
+
 ## 0.1.1
 
 - **Docs:** Major README overhaul with new framework icon, badges, accurate Quick Start guide, and categorized feature list.

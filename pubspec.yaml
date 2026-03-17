@@ -1,0 +1,19 @@
+name: flutter_agent
+description: A Flutter package that lets LLMs operate app UIs via the Semantics tree.
+version: 0.1.0
+homepage: https://github.com/user/flutter_agent
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.0
+  flutter_lints: ^5.0.0

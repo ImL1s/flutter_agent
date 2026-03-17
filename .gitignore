@@ -1,0 +1,43 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+build/
+pubspec.lock
+*.iml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Android
+**/android/.gradle/
+**/android/local.properties
+**/android/key.properties
+**/android/*.jks
+
+# iOS
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+
+# Coverage
+coverage/
+*.lcov
+
+# Generated
+*.g.dart
+*.freezed.dart
+
+# Misc
+.env
+*.log

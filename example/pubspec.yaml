@@ -1,0 +1,17 @@
+name: flutter_agent_example
+description: Example app demonstrating flutter_agent usage.
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_agent:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

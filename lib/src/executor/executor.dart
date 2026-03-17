@@ -1,5 +1,8 @@
+import 'dart:async';
 import '../models/action_descriptor.dart';
+import '../models/widget_descriptor.dart';
 import '../action/action_registry.dart';
+import '../action/action_dispatcher.dart';
 import '../audit/audit_log.dart';
 
 /// Result of executing a single action.
@@ -34,7 +37,27 @@ class Executor {
   final ActionRegistry actionRegistry;
   final AuditLog auditLog;
 
-  Executor({required this.actionRegistry, required this.auditLog});
+  /// Optional dispatcher for node-resolved execution.
+  final ActionDispatcher? actionDispatcher;
+
+  /// Current UI tree for dispatcher node resolution.
+  final WidgetDescriptor? uiTree;
+
+  /// Optional per-action confirmation callback.
+  /// Return `true` to proceed, `false` to skip the action.
+  final Future<bool> Function(ActionDescriptor action)? actionConfirmation;
+
+  /// Optional timeout for individual action execution.
+  final Duration? actionTimeout;
+
+  Executor({
+    required this.actionRegistry,
+    required this.auditLog,
+    this.actionDispatcher,
+    this.uiTree,
+    this.actionConfirmation,
+    this.actionTimeout,
+  });
 
   /// Execute a list of action descriptors sequentially.
   ///
@@ -70,8 +93,53 @@ class Executor {
         return ExecutionResult(action: action, success: false, error: msg);
       }
 
-      // Execute the action
-      await actionRegistry.execute(action.actionName, action.args);
+      // Per-action confirmation gate
+      if (actionConfirmation != null) {
+        final approved = await actionConfirmation!(action);
+        if (!approved) {
+          final msg = 'Action "${action.actionName}" denied by confirmation.';
+          auditLog.log(
+            action: action.actionName,
+            args: action.args,
+            timestamp: timestamp,
+            success: false,
+            error: msg,
+          );
+          return ExecutionResult(action: action, success: false, error: msg);
+        }
+      }
+
+      // If dispatcher is available, validate node resolution first
+      if (actionDispatcher != null && uiTree != null) {
+        final ok = await actionDispatcher!.dispatch(action, uiTree!);
+        if (!ok) {
+          final msg = actionDispatcher!.lastError ?? 'Dispatch failed';
+          auditLog.log(
+            action: action.actionName,
+            args: action.args,
+            timestamp: timestamp,
+            success: false,
+            error: msg,
+          );
+          return ExecutionResult(action: action, success: false, error: msg);
+        }
+        // Dispatcher already executed the action via registry
+        auditLog.log(
+          action: action.actionName,
+          args: action.args,
+          timestamp: timestamp,
+          success: true,
+        );
+        return ExecutionResult(action: action, success: true);
+      }
+
+      // Execute the action (with optional timeout)
+      final executeFuture = actionRegistry.execute(action.actionName, action.args);
+      if (actionTimeout != null) {
+        await executeFuture.timeout(actionTimeout!);
+      } else {
+        await executeFuture;
+      }
 
       // Log success
       auditLog.log(

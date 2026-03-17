@@ -2,6 +2,9 @@ import '../models/widget_descriptor.dart';
 import '../models/action_descriptor.dart';
 import '../action/action_registry.dart';
 import '../llm/llm_client.dart';
+import '../llm/conversation_history.dart';
+import '../llm/retry_executor.dart';
+import 'prompt_template.dart';
 
 /// Constructs LLM prompts from the current UI state and parses responses.
 ///
@@ -10,11 +13,29 @@ import '../llm/llm_client.dart';
 /// 2. Attaching available tool schemas from [ActionRegistry]
 /// 3. Sending the prompt to the [LLMClient]
 /// 4. Returning parsed [ActionDescriptor] list
+///
+/// When [conversationHistory] is provided, the planner maintains multi-turn
+/// context by appending user prompts and assistant tool calls to the history.
 class Planner {
   final LLMClient llmClient;
   final ActionRegistry actionRegistry;
 
-  Planner({required this.llmClient, required this.actionRegistry});
+  /// Optional conversation history for multi-turn LLM interactions.
+  final ConversationHistory? conversationHistory;
+
+  /// Optional retry executor for resilient LLM calls.
+  final RetryExecutor? retryExecutor;
+
+  /// Optional prompt template for customizing LLM prompts.
+  final PromptTemplate? promptTemplate;
+
+  Planner({
+    required this.llmClient,
+    required this.actionRegistry,
+    this.conversationHistory,
+    this.retryExecutor,
+    this.promptTemplate,
+  });
 
   /// Build a prompt from the current UI state and task, send to LLM,
   /// and return the parsed action descriptors.
@@ -24,38 +45,48 @@ class Planner {
   }) async {
     final prompt = buildPrompt(uiState, task);
     final toolSchemas = actionRegistry.toToolSchemas();
-    return llmClient.requestActions(
+
+    // Pass conversation history messages if available
+    final messages = conversationHistory?.toMessages();
+
+    // Call LLM (with retry if available)
+    Future<List<ActionDescriptor>> doRequest() => llmClient.requestActions(
       prompt: prompt,
       toolSchemas: toolSchemas,
+      messages: messages,
     );
+
+    final actions = retryExecutor != null
+        ? await retryExecutor!.execute(doRequest)
+        : await doRequest();
+
+    // Record this turn in history
+    if (conversationHistory != null) {
+      conversationHistory!.addUserMessage(prompt);
+      if (actions.isNotEmpty) {
+        conversationHistory!.addAssistantToolCalls(actions);
+      }
+    }
+
+    return actions;
   }
 
   /// Build the text prompt from the UI state and task.
   ///
-  /// Visible for testing.
+  /// Uses the [promptTemplate] if provided, otherwise falls back to
+  /// the default format.
   String buildPrompt(WidgetDescriptor uiState, String task) {
-    final uiDescription = _formatTree(uiState, indent: 0);
-    return '''Current UI state:
-$uiDescription
-Available actions: ${actionRegistry.registeredActions.join(', ')}
-
-Task: $task
-
-Analyze the UI state and use the available tools to accomplish the task. Be precise with node IDs.''';
-  }
-
-  /// Format a [WidgetDescriptor] tree as indented text.
-  String _formatTree(WidgetDescriptor node, {required int indent}) {
-    final prefix = '  ' * indent;
-    final buf = StringBuffer();
-    buf.write('$prefix- [${node.role}] id=${node.id} label="${node.label}"');
-    if (node.value.isNotEmpty) buf.write(' value="${node.value}"');
-    if (node.hint.isNotEmpty) buf.write(' hint="${node.hint}"');
-    if (node.actions.isNotEmpty) buf.write(' actions=${node.actions}');
-    buf.writeln();
-    for (final child in node.children) {
-      buf.write(_formatTree(child, indent: indent + 1));
+    if (promptTemplate != null) {
+      return promptTemplate!.format(
+        uiState: uiState,
+        task: task,
+        actionNames: actionRegistry.registeredActions,
+      );
     }
-    return buf.toString();
+    return const DefaultPromptTemplate().format(
+      uiState: uiState,
+      task: task,
+      actionNames: actionRegistry.registeredActions,
+    );
   }
 }

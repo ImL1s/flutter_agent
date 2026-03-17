@@ -48,3 +48,89 @@ class Verifier {
     return verify(before: previousState, after: current);
   }
 }
+
+/// Structured diff result showing exactly what changed between two UI trees.
+class VerificationDetail {
+  final VerificationResult result;
+  final List<String> changedNodeIds;
+  final List<String> addedNodeIds;
+  final List<String> removedNodeIds;
+
+  const VerificationDetail({
+    required this.result,
+    this.changedNodeIds = const [],
+    this.addedNodeIds = const [],
+    this.removedNodeIds = const [],
+  });
+
+  /// Compare two [WidgetDescriptor] trees and produce a detailed diff.
+  factory VerificationDetail.compare({
+    required WidgetDescriptor before,
+    required WidgetDescriptor after,
+  }) {
+    final changed = <String>[];
+    final added = <String>[];
+    final removed = <String>[];
+
+    _diffNodes(before, after, changed, added, removed);
+
+    final hasChanges = changed.isNotEmpty || added.isNotEmpty || removed.isNotEmpty;
+    return VerificationDetail(
+      result: hasChanges ? VerificationResult.changed : VerificationResult.unchanged,
+      changedNodeIds: changed,
+      addedNodeIds: added,
+      removedNodeIds: removed,
+    );
+  }
+
+  static void _diffNodes(
+    WidgetDescriptor before,
+    WidgetDescriptor after,
+    List<String> changed,
+    List<String> added,
+    List<String> removed,
+  ) {
+    // Check if this node's properties changed
+    if (before.label != after.label ||
+        before.value != after.value ||
+        before.role != after.role ||
+        before.hint != after.hint) {
+      changed.add(after.id);
+    }
+
+    // Build child maps by ID
+    final beforeChildren = {for (final c in before.children) c.id: c};
+    final afterChildren = {for (final c in after.children) c.id: c};
+
+    // Find added children
+    for (final id in afterChildren.keys) {
+      if (!beforeChildren.containsKey(id)) {
+        added.add(id);
+        _collectAllIds(afterChildren[id]!, added);
+      }
+    }
+
+    // Find removed children
+    for (final id in beforeChildren.keys) {
+      if (!afterChildren.containsKey(id)) {
+        removed.add(id);
+        _collectAllIds(beforeChildren[id]!, removed);
+      }
+    }
+
+    // Recurse into common children
+    for (final id in beforeChildren.keys) {
+      if (afterChildren.containsKey(id)) {
+        _diffNodes(beforeChildren[id]!, afterChildren[id]!, changed, added, removed);
+      }
+    }
+  }
+
+  /// Collect all descendant IDs (for added/removed subtrees).
+  static void _collectAllIds(WidgetDescriptor node, List<String> ids) {
+    for (final child in node.children) {
+      ids.add(child.id);
+      _collectAllIds(child, ids);
+    }
+  }
+}

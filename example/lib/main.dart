@@ -1,144 +1,93 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
 import 'package:flutter_agent/flutter_agent.dart';
 
 /// Example app demonstrating flutter_agent integration.
 ///
-/// This app creates a simple form UI with semantic annotations,
-/// registers actions in the ActionRegistry, and shows how to
-/// configure and run the AgentCore.
+/// This counter app registers tap/increment actions and shows
+/// how to wire up AgentCore with a simple UI.
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  // Enable semantics so the SemanticTreeWalker can capture the tree.
-  SemanticsBinding.instance.ensureSemantics();
-  runApp(const FlutterAgentExampleApp());
+  runApp(
+    const AgentOverlayWidget(
+      enabled: true,
+      child: CounterApp(),
+    ),
+  );
 }
 
-class FlutterAgentExampleApp extends StatelessWidget {
-  const FlutterAgentExampleApp({super.key});
+class CounterApp extends StatelessWidget {
+  const CounterApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Agent Example',
+      title: 'Flutter Agent Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorSchemeSeed: Colors.deepPurple,
         useMaterial3: true,
       ),
-      home: const ExampleFormPage(),
+      home: const CounterPage(),
     );
   }
 }
 
-class ExampleFormPage extends StatefulWidget {
-  const ExampleFormPage({super.key});
+class CounterPage extends StatefulWidget {
+  const CounterPage({super.key});
 
   @override
-  State<ExampleFormPage> createState() => _ExampleFormPageState();
+  State<CounterPage> createState() => _CounterPageState();
 }
 
-class _ExampleFormPageState extends State<ExampleFormPage> {
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  String _statusMessage = 'Ready';
-  bool _isAgentRunning = false;
+class _CounterPageState extends State<CounterPage> {
+  int _counter = 0;
 
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    super.dispose();
-  }
+  void _increment() => setState(() => _counter++);
+  void _decrement() => setState(() => _counter--);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Semantics(
-          header: true,
-          label: 'Flutter Agent Demo',
-          child: const Text('Flutter Agent Demo'),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      appBar: AppBar(title: const Text('Agent Demo')),
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Name field with semantics
             Semantics(
-              textField: true,
-              label: 'Name',
-              hint: 'Enter your name',
-              child: TextField(
-                controller: _nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                  hintText: 'Enter your name',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
-            const SizedBox(height: 16),
-
-            // Email field with semantics
-            Semantics(
-              textField: true,
-              label: 'Email',
-              hint: 'Enter your email',
-              child: TextField(
-                controller: _emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  hintText: 'Enter your email',
-                  border: OutlineInputBorder(),
-                ),
+              label: 'Counter Value',
+              value: '$_counter',
+              child: Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.displayLarge,
               ),
             ),
             const SizedBox(height: 24),
-
-            // Submit button with semantics
-            Semantics(
-              button: true,
-              label: 'Submit',
-              child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    _statusMessage =
-                        'Submitted: ${_nameController.text}, ${_emailController.text}';
-                  });
-                },
-                child: const Text('Submit'),
-              ),
-            ),
-            const SizedBox(height: 16),
-
-            // Status display
-            Semantics(
-              label: 'Status',
-              child: Text(
-                _statusMessage,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            ),
-            const Spacer(),
-
-            // Agent control button
-            Semantics(
-              button: true,
-              label: _isAgentRunning ? 'Agent Running...' : 'Run Agent',
-              child: ElevatedButton.icon(
-                onPressed: _isAgentRunning ? null : _runAgentDemo,
-                icon: Icon(
-                    _isAgentRunning ? Icons.hourglass_top : Icons.smart_toy),
-                label: Text(
-                    _isAgentRunning ? 'Agent Running...' : 'Run Agent Demo'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.all(16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Semantics(
+                  label: 'Decrement',
+                  button: true,
+                  child: FloatingActionButton(
+                    heroTag: 'decrement',
+                    onPressed: _decrement,
+                    child: const Icon(Icons.remove),
+                  ),
                 ),
-              ),
+                const SizedBox(width: 16),
+                Semantics(
+                  label: 'Increment',
+                  button: true,
+                  child: FloatingActionButton(
+                    heroTag: 'increment',
+                    onPressed: _increment,
+                    child: const Icon(Icons.add),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 48),
+            ElevatedButton(
+              onPressed: () => _runAgent(context),
+              child: const Text('Run Agent: Increment 3 times'),
             ),
           ],
         ),
@@ -146,61 +95,32 @@ class _ExampleFormPageState extends State<ExampleFormPage> {
     );
   }
 
-  Future<void> _runAgentDemo() async {
-    setState(() {
-      _isAgentRunning = true;
-      _statusMessage = 'Agent is analyzing the UI...';
-    });
-
-    // 1. Set up the action registry
+  Future<void> _runAgent(BuildContext context) async {
+    // 1. Set up action registry with built-in actions
     final registry = ActionRegistry();
-    registry.register('tap', (args) async {
-      print('[Agent] Tapping node ${args['id']}');
-      // In a real app, this would use SemanticsOwner.performAction
-    });
-    registry.register('enterText', (args) async {
-      print('[Agent] Entering text "${args['text']}" in node ${args['id']}');
-    });
+    BuiltInActions.registerDefaults(registry);
 
-    // 2. Create components
-    final treeWalker = SemanticTreeWalker();
-    final auditLog = AuditLog();
+    // Also register a custom increment action
+    registry.register('increment', (_) async => _increment(),
+        description: 'Increment the counter');
 
-    // NOTE: To actually run the agent, you'd need a real LLM client:
-    // final llmClient = OpenAILLMClient(apiKey: 'your-key');
-    //
-    // For this demo, we just show the tree capture:
-    final uiTree = treeWalker.capture();
+    // 2. Create agent components
+    // NOTE: In production, use a real LLM client like OpenAILLMClient.
+    // This demo shows the wiring only.
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'Agent wiring demo — in production, connect a real LLM client.\n'
+          'See README.md for full usage.',
+        ),
+        duration: Duration(seconds: 3),
+      ),
+    );
 
-    setState(() {
-      if (uiTree != null) {
-        _statusMessage = 'Captured UI tree with root: '
-            '${uiTree.role} "${uiTree.label}" '
-            '(${uiTree.children.length} children)';
-      } else {
-        _statusMessage = 'Could not capture semantics tree. '
-            'Make sure semantics are enabled.';
-      }
-      _isAgentRunning = false;
-    });
-
-    // Print the tree for debugging
-    if (uiTree != null) {
-      _printTree(uiTree, indent: 0);
-    }
-
-    // Print audit log
-    print('[AuditLog] ${auditLog.length} entries recorded');
-  }
-
-  void _printTree(WidgetDescriptor node, {required int indent}) {
-    final prefix = '  ' * indent;
-    print('$prefix[${node.role}] id=${node.id} '
-        'label="${node.label}" '
-        '${node.value.isNotEmpty ? 'value="${node.value}" ' : ''}'
-        '${node.actions.isNotEmpty ? 'actions=${node.actions}' : ''}');
-    for (final child in node.children) {
-      _printTree(child, indent: indent + 1);
+    // Demo: just execute the increment action 3 times directly
+    for (var i = 0; i < 3; i++) {
+      await registry.execute('increment', {});
+      await Future.delayed(const Duration(milliseconds: 300));
     }
   }
 }

@@ -1,14 +1,14 @@
 // ignore_for_file: avoid_print
+import 'dart:io';
 /// Comprehensive E2E test suite for the Flutter Agent framework.
 ///
-/// Tests every component against the local 9b model at http://10.5.0.2:1234
-///
-/// Usage:  dart run test/e2e/comprehensive_e2e.dart
+/// Usage:
+///   LLM_BASE_URL=http://localhost:1234/v1 LLM_MODEL=my-model dart run test/e2e/comprehensive_e2e.dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-const baseUrl = 'http://10.5.0.2:1234/v1';
-const model = 'qwen3.5-9b-claude-4.6-opus-reasoning-distilled';
+final baseUrl = Platform.environment['LLM_BASE_URL'] ?? 'http://localhost:1234/v1';
+final model = Platform.environment['LLM_MODEL'] ?? 'gpt-4o';
 
 int _passed = 0;
 int _failed = 0;

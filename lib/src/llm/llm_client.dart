@@ -11,8 +11,10 @@ abstract class LLMClient {
   ///
   /// [prompt] contains the current UI state description and user task.
   /// [toolSchemas] are OpenAI-compatible function definitions from [ActionRegistry].
+  /// [messages] is optional conversation history for multi-turn context.
   Future<List<ActionDescriptor>> requestActions({
     required String prompt,
     required List<Map<String, dynamic>> toolSchemas,
+    List<Map<String, dynamic>>? messages,
   });
 }

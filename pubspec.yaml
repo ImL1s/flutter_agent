@@ -1,7 +1,15 @@
 name: flutter_agent
-description: A Flutter package that lets LLMs operate app UIs via the Semantics tree.
+description: A Flutter package that lets LLMs operate app UIs via the Semantics tree. Perceive → Plan → Execute → Verify loop with built-in safety features.
 version: 0.1.0
-homepage: https://github.com/user/flutter_agent
+homepage: https://github.com/ImL1s/flutter_agent
+repository: https://github.com/ImL1s/flutter_agent
+issue_tracker: https://github.com/ImL1s/flutter_agent/issues
+topics:
+  - ai
+  - llm
+  - semantics
+  - accessibility
+  - agent
 
 environment:
   sdk: '>=3.4.0 <4.0.0'

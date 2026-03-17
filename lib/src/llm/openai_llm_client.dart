@@ -44,13 +44,17 @@ class OpenAILLMClient implements LLMClient {
   Future<List<ActionDescriptor>> requestActions({
     required String prompt,
     required List<Map<String, dynamic>> toolSchemas,
+    List<Map<String, dynamic>>? messages,
   }) async {
+    final allMessages = <Map<String, dynamic>>[
+      {'role': 'system', 'content': systemPrompt},
+      if (messages != null) ...messages,
+      {'role': 'user', 'content': prompt},
+    ];
+
     final requestBody = <String, dynamic>{
       'model': model,
-      'messages': [
-        {'role': 'system', 'content': systemPrompt},
-        {'role': 'user', 'content': prompt},
-      ],
+      'messages': allMessages,
     };
 
     // Only include tools if there are schemas — some local LLM servers

@@ -37,7 +37,10 @@ class ActionDispatcher {
     }
 
     // Resolve target node by ID from args
-    final targetId = action.args['id'] as String?;
+    final targetId =
+        (action.args['id'] ?? action.args['nodeId'] ?? action.args['targetId'])
+            ?.toString();
+
     if (targetId != null) {
       final node = NodeResolver.resolve(root, Selector.byId(targetId));
       if (node == null) {

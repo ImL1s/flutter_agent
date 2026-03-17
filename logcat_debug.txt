@@ -1,0 +1,185 @@
+--------- beginning of system
+03-17 12:57:34.756  2858  3450 D SDHMS:com.sec.android.sdhms.thermal.siop.B: SIOP:: AP:233(359,100) BAT:316(316,0) CHG:341(341,0) USB:313(313,0) WIFI:257(309,50) PA:262(319,50) LRF:-888(-888) LRB:-888(-888) 
+--------- beginning of main
+03-17 12:57:35.474  8774  8774 I Finsky  : [2] App states replicator found 15 unowned apps
+03-17 12:57:35.496  8774  8820 I Finsky  : [55980] Completed 0 account content syncs with 0 successful.
+03-17 12:57:35.497  8774  8774 I Finsky  : [2] [ContentSync] Installation state replication succeeded.
+03-17 12:57:35.497  8774  8774 I Finsky  : [2] SCH: jobFinished: 12-1. TimeElapsed: 4203ms.
+03-17 12:57:35.497  8774  8774 I Finsky  : [2] WM::SCH: Logging work end for 12-1
+03-17 12:57:35.524  8774  8816 I Finsky  : [55976] SCH: Scheduling phonesky job Id: 1-1337, CT: 1773695675139, Constraints: [{ L: 42521350, D: 85721350, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+03-17 12:57:35.524  8774  8816 I Finsky  : [55976] SCH: Scheduling phonesky job Id: 34-49, CT: 1773695681622, Constraints: [{ L: 604800000, D: 2447133100, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+03-17 12:57:35.525  8774  8816 I Finsky  : [55976] SCH: Scheduling phonesky job Id: 34-53, CT: 1773695681623, Constraints: [{ L: 604800000, D: 2526684537, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+03-17 12:57:35.525  8774  8816 I Finsky  : [55976] SCH: Scheduling phonesky job Id: 34-59, CT: 1773709868855, Constraints: [{ L: 79199841, D: 1375199841, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+03-17 12:57:35.525  8774  8816 I Finsky  : [55976] SCH: Scheduling phonesky job Id: 34-60, CT: 1773709869070, Constraints: [{ L: 604800000, D: 2591999852, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+03-17 12:57:35.539  8774  8812 I Finsky  : [55971] SCH: Scheduling 1 system job(s)
+03-17 12:57:35.540  8774  8812 I Finsky  : [55971] SCH: Scheduling system job Id: 9567, L: 14740950, D: 57940950, C: false, I: false, N: 1
+03-17 12:57:35.554  8774 30732 I Finsky  : [56140] SCH: job service finished with id 9561.
+03-17 12:57:35.623  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 12:57:35.629  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232739)
+03-17 12:57:35.631  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 12:57:36.528  2430  2430 I io_stats: !@   8,0 r 2422182 123783312 w 2129002 110411348 d 153731 193529744 f 492002 503221 iot 2338596 1860033 th 102400 0 0 pt 0 inp 0 0 546250.924
+03-17 12:57:36.791  1043  1330 D WifiConnectivityMonitor.NetworkStatsAnalyzer: Backhaul result - RSSI:-31, CE:2, PE:2, TI:7, PTI:7, TW:0, PTW:0, Tx:1, Rx:6, TxS:0, RxS:0, RESULT:true, IC:1, ICT:5, WC:2, WCT:5, R:0, RC:0, IE:0, EC:0
+03-17 12:57:38.725  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 12:57:39.226   513   513 I SurfaceFlinger: SFWD update time=546253623593019
+03-17 12:57:40.053  3387  3408 D [AirCmd]_BleSpenBleDriver: GattCallback : onCharacteristicChanged : 68:A8:E1:66:B2:F6 / UUID_BATTERY_LEVEL, PERM=0, RAWDATA : [100 0]DESC_CNT=2 [ DESC : UUID_CHARACTERISTIC_CONFIG, [1 0]] [ DESC : UNKNOWN_UUID, [nodata]] 
+03-17 12:57:40.055  3387  3408 I [AirCmd]_BleSpenGenericDriver: onCharacteristicChanged : Battery:100
+03-17 12:57:40.056  3387  3387 D [AirCmd]_RemoteSpenMainController: updateNotification : curConnState=CONNECTED, implicit=false / START_AUTO_CONNECTION
+03-17 12:57:40.061  3387  3387 D [AirCmd]_IndicatorController: hideIcon
+03-17 12:57:40.098  3387  3403 W vice.aircomman: Reducing the number of considered missed Gc histogram windows from 180 to 100
+03-17 12:57:40.263  1043  1071 E Watchdog: !@Sync: 18198 heap: 71 / 78 [2026-03-17 12:57:40.263] sdogWay: softdog
+03-17 12:57:41.017 30756 30756 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+03-17 12:57:41.020 30756 30756 I AndroidRuntime: Using default boot image
+03-17 12:57:41.020 30756 30756 I AndroidRuntime: Leaving lock profiling enabled
+03-17 12:57:41.020 30756 30756 D SecNativeFeatureCppIf: encoded
+03-17 12:57:41.020 30756 30756 D SecNativeFeatureCppIf: decoding and unzip finish
+03-17 12:57:41.020 30756 30756 D SecNativeFeatureCppIf: use unCompDataBuff. encoded
+03-17 12:57:41.020 30756 30756 D SecNativeFeatureCppIf: Free unCompDataBuff
+03-17 12:57:41.020 30756 30756 D SecNativeFeatureCppIf: encoded
+03-17 12:57:41.020 30756 30756 D SecNativeFeatureCppIf: decoding and unzip finish
+03-17 12:57:41.020 30756 30756 D SecNativeFeatureCppIf: use unCompDataBuff. encoded
+03-17 12:57:41.021 30756 30756 D SecNativeFeatureCppIf: Free unCompDataBuff
+03-17 12:57:41.021 30756 30756 D SecNativeFeatureCppIf: encoded
+03-17 12:57:41.021 30756 30756 D SecNativeFeatureCppIf: decoding and unzip finish
+03-17 12:57:41.021 30756 30756 D SecNativeFeatureCppIf: use unCompDataBuff. encoded
+03-17 12:57:41.021 30756 30756 D SecNativeFeatureCppIf: Free unCompDataBuff
+03-17 12:57:41.021 30756 30756 D SecNativeFeatureCppIf: encoded
+03-17 12:57:41.021 30756 30756 D SecNativeFeatureCppIf: decoding and unzip finish
+03-17 12:57:41.021 30756 30756 D SecNativeFeatureCppIf: use unCompDataBuff. encoded
+03-17 12:57:41.021 30756 30756 D SecNativeFeatureCppIf: Free unCompDataBuff
+03-17 12:57:41.021 30756 30756 D AndroidRuntime: addProductProperty
+03-17 12:57:41.021 30756 30756 D AndroidRuntime: addProductProperty: pBrand1 != NULL
+03-17 12:57:41.021 30756 30756 D AndroidRuntime: addProductProperty: else
+03-17 12:57:41.060   511   511 I lmkd    : cached 4, sandbox(not0) 0
+03-17 12:57:41.063   511   511 I lmkd    : Reclaim Mem 'com.google.process.gservices' (20730), uid 10091, oom_adj 955, state 20 to free 76120kB
+03-17 12:57:41.063   511   511 I lmkd    : Reclaimed 76120kB at oom_adj 850
+03-17 12:57:41.096  1043  1889 I ActivityManager: Process com.google.process.gservices (pid 20730) has died: cch+55 CEM (148,2535)
+03-17 12:57:41.120   697   697 I Zygote  : Process 20730 exited due to signal 9 (Killed)
+03-17 12:57:41.122  1043  1076 I libprocessgroup: Successfully killed process cgroup uid 10091 pid 20730 in 25ms
+03-17 12:57:41.126 30756 30756 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+03-17 12:57:41.133 30756 30756 I app_process: The ClassLoaderContext is a special shared library.
+03-17 12:57:41.148 30756 30756 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+03-17 12:57:41.148 30756 30756 E SemAffinityControl: SemAffinityControl: registerfunction enter
+03-17 12:57:41.152 30756 30756 D AndroidRuntime: Calling main entry com.android.commands.input.Input
+03-17 12:57:41.158  1043  1889 D InputDispatcher: Inject motion (30756): action=0x0, time=546255550000000, f=0x0, d=0
+03-17 12:57:41.158  1043  1232 D InputDispatcher: pointer touchable region used!
+03-17 12:57:41.159  1043  1232 I InputDispatcher: Delivering touch to (1396): action: 0x4, f=0x0, d=0, 'a3ae33b', t=0
+03-17 12:57:41.159  1043  1232 I InputDispatcher: Delivering touch to (1396): action: 0x4, f=0x0, d=0, 'e89f9a9', t=0
+03-17 12:57:41.159  1043  1232 I InputDispatcher: Delivering touch to (29354): action: 0x0, f=0x0, d=0, 'b5b8cf1', t=0
+03-17 12:57:41.161 29354 29354 I ViewRootImpl@b433e60[MainActivity]: ViewPostIme pointer 0
+03-17 12:57:41.168  1043  1889 D InputDispatcher: Inject motion (30756): action=0x1, time=546255550000000, f=0x0, d=0
+03-17 12:57:41.169  1043  1232 I InputDispatcher: Delivering touch to (29354): action: 0x1, f=0x0, d=0, 'b5b8cf1', t=0
+03-17 12:57:41.339 29354 29354 I ViewRootImpl@b433e60[MainActivity]: ViewPostIme pointer 1
+03-17 12:57:41.341 30756 30756 D AndroidRuntime: Shutting down VM
+03-17 12:57:41.532  2430  2430 I io_stats: !@   8,0 r 2422182 123783312 w 2129023 110411532 d 153734 193529756 f 492004 503224 iot 2338600 1860039 th 102400 0 0 pt 0 inp 0 0 546255.928
+03-17 12:57:41.673  2645  2645 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action: cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+03-17 12:57:41.797  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 12:57:41.803  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232740)
+03-17 12:57:41.804  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 12:57:42.186  1043 28647 D BatteryService: Sending ACTION_BATTERY_CHANGED. scale:100, info:{.chargerAcOnline = false, .chargerUsbOnline = true, .chargerWirelessOnline = false, .maxChargingCurrent = 0, .maxChargingVoltage = 0, .batteryStatus = FULL, .batteryHealth = GOOD, .batteryPresent = true, .batteryLevel = 100, .batteryVoltage = 4197, .batteryTemperature = 316, .batteryCurrent = 0, .batteryCycleCount = 0, .batteryFullCharge = 4000000, .batteryChargeCounter = 3753000, .batteryTechnology = Li-ion}
+03-17 12:57:42.186  1043 28647 D BatteryService: online:5, current avg:-50, charge type:1, POGO powered:false, power sharing:false, high voltage charger:false, charger_type:0, capacity:280000, misc_event:131072, current_event:32768, current_now:-4
+03-17 12:57:42.190  1043  1043 I MotionRecognitionService: Plugged
+03-17 12:57:42.190  1043  1043 D MotionRecognitionService:   mCableConnection= 1
+03-17 12:57:42.190  1043  1043 D MotionRecognitionService: set cable connected : mGripEnabled = false
+03-17 12:57:42.192  1043  1043 D UsbDeviceManager: received ACTION_BATTERY_CHANGED
+03-17 12:57:42.194  1043  1065 D UsbDeviceManager: handleMessage -> MSG_UPDATE_CHARGING_STATE: mUsbCharging=true
+03-17 12:57:42.195  1043  1545 D SLocation: SGeofenceManager - sgfm received : android.intent.action.BATTERY_CHANGED
+03-17 12:57:42.196  1396  1396 D KeyguardUpdateMonitor: received broadcast android.intent.action.BATTERY_CHANGED
+03-17 12:57:42.196  1396  1396 D KeyguardUpdateMonitor: handleBatteryUpdate
+03-17 12:57:42.200  1378  1378 D BigDataInfoController: Intent : android.intent.action.BATTERY_CHANGED
+03-17 12:57:42.202  1378  1378 D BigDataInfoController: Intent : android.intent.action.BATTERY_CHANGED
+03-17 12:57:42.213  1728  2166 I EPDG -- SIM0 [EpdgSubScription]: android.intent.action.BATTERY_CHANGED intent received.
+03-17 12:57:42.215  1396  1396 D QSContainerImpl: getDisplayHeight portrait? true  displayHeight= 2220
+03-17 12:57:42.238  1396  1396 D PowerUI : priorPlugType = 2 mPlugType = 2 priorBatteryStatus = 5 mBatteryStatus = 5
+03-17 12:57:42.238  1396  1396 D PowerUI : Battery swelling mode - priorBatterySwellingMode = 0 mBatterySwellingMode = 0 mBatteryStatus = 5
+03-17 12:57:42.238  1396  1396 I PowerUI : misc_event = 131072
+03-17 12:57:44.235   513   513 I SurfaceFlinger: SFWD update time=546258633157554
+03-17 12:57:44.818  2858  3450 D SDHMS:com.sec.android.sdhms.thermal.siop.B: SIOP:: AP:235(350,100) BAT:316(316,0) CHG:337(337,0) USB:314(314,0) WIFI:257(310,50) PA:263(319,50) LRF:-888(-888) LRB:-888(-888) 
+03-17 12:57:44.892  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 12:57:44.900  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232755)
+03-17 12:57:44.902  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 12:57:44.951  3387  3408 D [AirCmd]_BleSpenBleDriver: GattCallback : onCharacteristicChanged : 68:A8:E1:66:B2:F6 / UUID_BATTERY_LEVEL, PERM=0, RAWDATA : [90 0]DESC_CNT=2 [ DESC : UUID_CHARACTERISTIC_CONFIG, [1 0]] [ DESC : UNKNOWN_UUID, [nodata]] 
+03-17 12:57:44.953  3387  3408 I [AirCmd]_BleSpenGenericDriver: onCharacteristicChanged : Battery:90
+03-17 12:57:44.953  3387  3408 D [AirCmd]_HqmManager: notifyBatteryLevelChanged : Battery level changed abnormally. before=100, after=90
+03-17 12:57:44.954  3387  3387 D [AirCmd]_RemoteSpenMainController: updateNotification : curConnState=CONNECTED, implicit=false / START_AUTO_CONNECTION
+03-17 12:57:44.957  3387  3387 D [AirCmd]_IndicatorController: hideIcon
+03-17 12:57:46.114  1043  1073 D PowerManagerService: [api] setDeviceIdleTempWhitelist: appids:  (uid: 1000 pid: 1043)
+03-17 12:57:46.535  2430  2430 I io_stats: !@   8,0 r 2422184 123783412 w 2129042 110411636 d 153735 193529760 f 492005 503226 iot 2338608 1860042 th 102400 0 0 pt 0 inp 0 0 546260.932
+03-17 12:57:46.648 20656 27949 I gle.android.gm: Explicit concurrent copying GC freed 881(108KB) AllocSpace objects, 0(0B) LOS objects, 24% free, 9402KB/12MB, paused 248us total 199.020ms
+03-17 12:57:46.800  1043  1330 D WifiConnectivityMonitor.NetworkStatsAnalyzer: Backhaul result - RSSI:-30, CE:2, PE:2, TI:7, PTI:7, TW:0, PTW:0, Tx:1, Rx:1, TxS:1, RxS:0, RESULT:true, IC:1, ICT:5, WC:3, WCT:5, R:0, RC:0, IE:0, EC:0
+03-17 12:57:47.996  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 12:57:48.004  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232740)
+03-17 12:57:48.006  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 12:57:49.228   513   513 I SurfaceFlinger: SFWD update time=546263625261358
+03-17 12:57:51.104  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 12:57:51.111  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232755)
+03-17 12:57:51.112  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 12:57:51.539  2430  2430 I io_stats: !@   8,0 r 2422184 123783412 w 2129049 110411864 d 153736 193529888 f 492006 503227 iot 2338612 1860047 th 102400 0 0 pt 0 inp 0 0 546265.935
+03-17 12:57:52.355  1043 28647 D BatteryService: Sending ACTION_BATTERY_CHANGED. scale:100, info:{.chargerAcOnline = false, .chargerUsbOnline = true, .chargerWirelessOnline = false, .maxChargingCurrent = 0, .maxChargingVoltage = 0, .batteryStatus = FULL, .batteryHealth = GOOD, .batteryPresent = true, .batteryLevel = 100, .batteryVoltage = 4276, .batteryTemperature = 317, .batteryCurrent = 0, .batteryCycleCount = 0, .batteryFullCharge = 4000000, .batteryChargeCounter = 3753000, .batteryTechnology = Li-ion}
+03-17 12:57:52.355  1043 28647 D BatteryService: online:5, current avg:98, charge type:1, POGO powered:false, power sharing:false, high voltage charger:false, charger_type:0, capacity:280000, misc_event:131072, current_event:32768, current_now:181
+03-17 12:57:52.359  1043  1043 I MotionRecognitionService: Plugged
+03-17 12:57:52.360  1043  1043 D MotionRecognitionService:   mCableConnection= 1
+03-17 12:57:52.360  1043  1043 D MotionRecognitionService: set cable connected : mGripEnabled = false
+03-17 12:57:52.361  1043  1043 D UsbDeviceManager: received ACTION_BATTERY_CHANGED
+03-17 12:57:52.362  1043  1545 D SLocation: SGeofenceManager - sgfm received : android.intent.action.BATTERY_CHANGED
+03-17 12:57:52.363  1043  1065 D UsbDeviceManager: handleMessage -> MSG_UPDATE_CHARGING_STATE: mUsbCharging=true
+03-17 12:57:52.364  1396  1396 D KeyguardUpdateMonitor: received broadcast android.intent.action.BATTERY_CHANGED
+03-17 12:57:52.365  1396  1396 D KeyguardUpdateMonitor: handleBatteryUpdate
+03-17 12:57:52.369  1378  1378 D BigDataInfoController: Intent : android.intent.action.BATTERY_CHANGED
+03-17 12:57:52.370  1378  1378 D BigDataInfoController: Intent : android.intent.action.BATTERY_CHANGED
+03-17 12:57:52.374  1396  1396 D PowerUI : priorPlugType = 2 mPlugType = 2 priorBatteryStatus = 5 mBatteryStatus = 5
+03-17 12:57:52.374  1396  1396 D PowerUI : Battery swelling mode - priorBatterySwellingMode = 0 mBatterySwellingMode = 0 mBatteryStatus = 5
+03-17 12:57:52.374  1396  1396 I PowerUI : misc_event = 131072
+03-17 12:57:52.376  1728  2166 I EPDG -- SIM0 [EpdgSubScription]: android.intent.action.BATTERY_CHANGED intent received.
+03-17 12:57:52.387  1396  1396 D QSContainerImpl: getDisplayHeight portrait? true  displayHeight= 2220
+03-17 12:57:54.235  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 12:57:54.239   513   513 I SurfaceFlinger: SFWD update time=546268636972739
+03-17 12:57:54.890  2858  3450 D SDHMS:com.sec.android.sdhms.thermal.siop.B: SIOP:: AP:236(339,100) BAT:317(317,0) CHG:333(333,0) USB:314(314,0) WIFI:257(310,50) PA:264(318,50) LRF:-888(-888) LRB:-888(-888) 
+03-17 12:57:56.544  2430  2430 I io_stats: !@   8,0 r 2422184 123783412 w 2129066 110411964 d 153736 193529888 f 492007 503228 iot 2338612 1860049 th 102400 0 0 pt 0 inp 0 0 546270.940
+03-17 12:57:56.809  1043  1330 D WifiConnectivityMonitor.NetworkStatsAnalyzer: Backhaul result - RSSI:-30, CE:2, PE:2, TI:7, PTI:7, TW:0, PTW:0, Tx:0, Rx:0, TxS:0, RxS:0, RESULT:true, IC:1, ICT:5, WC:4, WCT:5, R:0, RC:0, IE:0, EC:0
+03-17 12:57:57.340  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 12:57:59.068  1043  1889 D NtpTrustedTime: currentTimeMillis() cache hit
+03-17 12:57:59.097   773  1255 I netd    : tetherGetStats() <9.68ms>
+03-17 12:57:59.109  1043  1889 D NtpTrustedTime: currentTimeMillis() cache hit
+03-17 12:57:59.114  1043  1264 D NtpTrustedTime: currentTimeMillis() cache hit
+03-17 12:57:59.116  1043  1264 D NtpTrustedTime: currentTimeMillis() cache hit
+03-17 12:57:59.117  1043  1264 V NetworkPolicy: updateNotificationsNL() - totalBytes : 0, policy : NetworkPolicy{template=NetworkTemplate: matchRule=MOBILE, subscriberId=456061..., matchSubscriberIds=[456061...] cycleRule=RecurrenceRule{start=2025-01-01T00:00+08:00[Asia/Taipei] end=null period=P1M} warningBytes=2000000000 limitBytes=-1 lastWarningSnooze=-1 lastLimitSnooze=-1 lastRapidSnooze=-1 metered=true inferred=true}
+03-17 12:57:59.121  1043  1889 D NtpTrustedTime: currentTimeMillis() cache hit
+03-17 12:57:59.137   773  1255 I netd    : tetherGetStats() <5.59ms>
+03-17 12:57:59.144  1043  1889 D NtpTrustedTime: currentTimeMillis() cache hit
+03-17 12:57:59.149  1043  1264 D NtpTrustedTime: currentTimeMillis() cache hit
+03-17 12:57:59.150  1043  1264 D NtpTrustedTime: currentTimeMillis() cache hit
+03-17 12:57:59.150  1043  1264 V NetworkPolicy: updateNotificationsNL() - totalBytes : 0, policy : NetworkPolicy{template=NetworkTemplate: matchRule=MOBILE, subscriberId=456061..., matchSubscriberIds=[456061...] cycleRule=RecurrenceRule{start=2025-01-01T00:00+08:00[Asia/Taipei] end=null period=P1M} warningBytes=2000000000 limitBytes=-1 lastWarningSnooze=-1 lastLimitSnooze=-1 lastRapidSnooze=-1 metered=true inferred=true}
+03-17 12:57:59.232   513   513 I SurfaceFlinger: SFWD update time=546273629261389
+03-17 12:57:59.999  1043  1213 D SamsungAlarmManager: Expired : 8
+03-17 12:58:00.000  1043  1213 V SamsungAlarmManager: Sending to uid : 1000 listener=com.android.server.AlarmManagerService$2@67db6c7 alarm=Alarm{a16af2c type 3 when 775688476 android}
+03-17 12:58:00.001  1043  1213 D SamsungAlarmManager: setExact Listener (T:3/F:1/AC:false) 20260317T125900 - CU:1000/CP:1043
+03-17 12:58:00.004  1396  1396 D KeyguardUpdateMonitor: received broadcast android.intent.action.TIME_TICK
+03-17 12:58:00.004  1396  1396 D KeyguardUpdateMonitor: handleTimeUpdate
+03-17 12:58:00.004  1396  1396 D FaceWidgetPagesController: onTimeChanged()
+03-17 12:58:00.005  1043  1213 I SamsungAlarmManager: setLocked to kernel - T:2 / 20260317T130546, SetElapsed=776154527, nowELAPSED=775688481
+03-17 12:58:00.006  1043  1213 I SamsungAlarmManager: setLocked to kernel - T:3 / 20260317T125800, SetElapsed=775688477, nowELAPSED=775688483
+03-17 12:58:00.007  1396  1396 D QSClockBellTower: He is ready to ring the bell. (((timeText:12:58, skipUpdateForDemo:false, dateText:3月17日, 週二, shortenDateText = 3月17日 週二)))
+03-17 12:58:00.009  1396  1396 D QSClock : status_bar_clock notifyTimeChanged(currentTime:12:58) mClockVisibleByPolicy:true, mClockVisibleByUser:true, visible?true, parent:android.widget.LinearLayout{c3e9a49 V.E...... ......ID 0,0-97,63 #7f0a0395 app:id/left_clock_container}
+03-17 12:58:00.010  1396  1396 D QSClockBellTower: Everyone heard the bell. run(currentTime:1773723480005,   getTime():Tue Mar 17 12:58:00 GMT+08:00 2026,   getTimeZone():libcore.util.ZoneInfo[id="Asia/Taipei",mRawOffset=28800000,mEarliestRawOffset=28800000,mUseDst=false,mDstSavings=0,transitions=40])
+03-17 12:58:00.016  1043  1213 I SamsungAlarmManager: setLocked to kernel - T:2 / 20260317T130546, SetElapsed=776154527, nowELAPSED=775688492
+03-17 12:58:00.016  1043  1213 I SamsungAlarmManager: setLocked to kernel - T:3 / 20260317T125800, SetElapsed=775688477, nowELAPSED=775688493
+03-17 12:58:00.022  1043  1213 D SamsungAlarmManager: Expired : 8
+03-17 12:58:00.023  1043  1213 V SamsungAlarmManager: Sending to uid : 10152 action=com.samsung.action.EVERY_MINUTE_CLOCK_UPDATE alarm=Alarm{d102df5 type 1 when 1773723480000 com.sec.android.app.launcher}
+03-17 12:58:00.025  1396  1396 D QSContainerImpl: getDisplayHeight portrait? true  displayHeight= 2220
+03-17 12:58:00.033  1948  1948 I LiveIconUpdateEventHandler: onReceive: com.samsung.action.EVERY_MINUTE_CLOCK_UPDATE
+03-17 12:58:00.034  1948  1948 D LiveIconUpdateEventHandler: updateClockLiveIcon
+03-17 12:58:00.037  1948  1948 D LiveIconUpdateEventHandler: cancelMinuteChangeAlarm
+03-17 12:58:00.038  1043  1889 D SamsungAlarmManager: Cancel Alarm calling from uid:10152 pid :1948 / op:PendingIntent{a2e51fb: PendingIntentRecord{690b1b4 com.sec.android.app.launcher broadcastIntent}}
+03-17 12:58:00.039  1043  1213 I SamsungAlarmManager: setLocked to kernel - T:2 / 20260317T130546, SetElapsed=776154527, nowELAPSED=775688516
+03-17 12:58:00.040  1043  1213 I SamsungAlarmManager: setLocked to kernel - T:3 / 20260317T125816, SetElapsed=775704655, nowELAPSED=775688516
+03-17 12:58:00.042  1948  1948 D LiveIconUpdateEventHandler: setMinuteChangeAlarm
+03-17 12:58:00.056  1043  1889 D SamsungAlarmManager: setInexact Intent (T:1/F:0/AC:false) 20260317T125900 - CU:10152/CP:1948
+03-17 12:58:00.056  1043  1889 I SamsungAlarmManager: setLocked to kernel - T:2 / 20260317T130546, SetElapsed=776154527, nowELAPSED=775688533
+03-17 12:58:00.056  1043  1889 I SamsungAlarmManager: setLocked to kernel - T:3 / 20260317T125816, SetElapsed=775704655, nowELAPSED=775688533
+03-17 12:58:00.444  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 12:58:01.549  2430  2430 I io_stats: !@   8,0 r 2422184 123783412 w 2129067 110411968 d 153736 193529888 f 492007 503228 iot 2338612 1860050 th 102400 0 0 pt 0 inp 0 0 546275.945
+03-17 12:58:03.604  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 12:58:03.612  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232739)
+03-17 12:58:03.614  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 12:58:03.640   513   513 I SurfaceFlinger: SFWD update time=546278037454924
+03-17 12:58:04.955  2858  3450 D SDHMS:com.sec.android.sdhms.thermal.siop.B: SIOP:: AP:235(333,100) BAT:317(317,0) CHG:330(330,0) USB:314(314,0) WIFI:258(310,50) PA:265(316,50) LRF:-888(-888) LRB:-888(-888) 

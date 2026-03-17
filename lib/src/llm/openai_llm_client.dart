@@ -1,7 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'llm_client.dart';
 import '../models/action_descriptor.dart';
+import 'llm_client.dart';
 
 /// OpenAI API implementation of [LLMClient].
 ///
@@ -80,6 +81,20 @@ class OpenAILLMClient implements LLMClient {
         'OpenAI API error ${response.statusCode}: ${response.body}',
       );
     }
+    
+    final responseBody = response.body;
+    try {
+      File('/data/user/0/com.example.ai_flutter_agent_example/cache/llm_log.txt').writeAsStringSync(
+        '===== LLM Raw Response =====\n$responseBody\n=======================\n\n',
+        mode: FileMode.append,
+      );
+    } catch (e) {
+      print('Could not write LLM log to file: $e');
+    }
+
+    print('===== LLM Raw Response =====');
+    print(responseBody);
+    print('=======================');
 
     return _parseResponse(response.body);
   }
@@ -91,7 +106,10 @@ class OpenAILLMClient implements LLMClient {
 
     final message = choices.first['message'] as Map<String, dynamic>;
     final toolCalls = message['tool_calls'] as List?;
-    if (toolCalls == null || toolCalls.isEmpty) return [];
+    if (toolCalls == null || toolCalls.isEmpty) {
+      final content = message['content'];
+      throw LLMException('LLM returned no tool_calls. Assistant said: $content');
+    }
 
     return toolCalls.map((tc) {
       final fn = tc['function'] as Map<String, dynamic>;

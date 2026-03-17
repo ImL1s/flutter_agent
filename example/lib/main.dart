@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide ActionDispatcher;
 import 'package:ai_flutter_agent/ai_flutter_agent.dart';
 
 /// Example app demonstrating ai_flutter_agent integration.
@@ -39,6 +39,7 @@ class CounterPage extends StatefulWidget {
 
 class _CounterPageState extends State<CounterPage> {
   int _counter = 0;
+  String _agentStatus = 'Idle';
 
   void _increment() => setState(() => _counter++);
   void _decrement() => setState(() => _counter--);
@@ -84,9 +85,14 @@ class _CounterPageState extends State<CounterPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 48),
+            const SizedBox(height: 24),
+            Text('Agent Status: $_agentStatus', textAlign: TextAlign.center, style: const TextStyle(color: Colors.red)),
+            const SizedBox(height: 24),
             ElevatedButton(
-              onPressed: () => _runAgent(context),
+              onPressed: () {
+                print('--- BUTTON TAPPED ---');
+                _runAgent(context);
+              },
               child: const Text('Run Agent: Increment 3 times'),
             ),
           ],
@@ -96,31 +102,58 @@ class _CounterPageState extends State<CounterPage> {
   }
 
   Future<void> _runAgent(BuildContext context) async {
+    print('--- _runAgent START ---');
     // 1. Set up action registry with built-in actions
     final registry = ActionRegistry();
     BuiltInActions.registerDefaults(registry);
 
-    // Also register a custom increment action
-    registry.register('increment', (_) async => _increment(),
-        description: 'Increment the counter');
+    // 2. Create the real LLM client using the user-provided local server URL
+    // (Using 127.0.0.1 via adb reverse tcp:1234 tcp:1234 since it's a physical device)
+    final client = OpenAILLMClient(
+      apiKey: 'test-key',
+      baseUrl: 'http://127.0.0.1:1234/v1',
+      model: 'local-model', // Model name doesn't usually matter for LM Studio 
+    );
 
-    // 2. Create agent components
-    // NOTE: In production, use a real LLM client like OpenAILLMClient.
-    // This demo shows the wiring only.
+    // 3. Create the agent components and the agent itself
+    final treeWalker = SemanticTreeWalker();
+    final auditLog = AuditLog();
+    final dispatcher = ActionDispatcher(registry: registry);
+
+    // 3. Create the planner to translate UI states into LLM prompts
+    final history = ConversationHistory(maxTurns: 10);
+    final planner = Planner(
+      llmClient: client, 
+      actionRegistry: registry,
+      conversationHistory: history,
+    );
+
+    final agent = AgentCore(
+      treeWalker: treeWalker,
+      planner: planner,
+      executor: Executor(actionRegistry: registry, auditLog: auditLog, actionDispatcher: dispatcher),
+      verifier: Verifier(treeWalker: treeWalker),
+      config: const AgentConfig(
+        maxSteps: 6,
+        stepDelay: Duration(seconds: 1),
+      ),
+    );
+
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text(
-          'Agent wiring demo — in production, connect a real LLM client.\n'
-          'See README.md for full usage.',
-        ),
+        content: Text('Starting Agent: Please observe the UI...'),
         duration: Duration(seconds: 3),
       ),
     );
 
-    // Demo: just execute the increment action 3 times directly
-    for (var i = 0; i < 3; i++) {
-      await registry.execute('increment', {});
-      await Future.delayed(const Duration(milliseconds: 300));
+    try {
+      setState(() => _agentStatus = 'Running...');
+      // 4. Run the autonomous loop
+      await agent.run('Please click the Increment button 3 times exactly.');
+      
+      if (mounted) setState(() => _agentStatus = 'Success!');
+    } catch (e) {
+      if (mounted) setState(() => _agentStatus = 'Error: $e');
     }
   }
 }

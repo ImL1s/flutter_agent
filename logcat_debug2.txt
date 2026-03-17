@@ -1,0 +1,183 @@
+--------- beginning of main
+03-17 13:02:05.607  8774  8821 I Finsky  : [55981] AIM: AppInfoManager-Perf > Destroying AppInfoManager ...
+03-17 13:02:05.619  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:05.622  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232755)
+03-17 13:02:05.623  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+--------- beginning of system
+03-17 13:02:06.451  2858  3450 D SDHMS:com.sec.android.sdhms.thermal.siop.B: SIOP:: AP:240(365,100) BAT:321(321,0) CHG:346(346,0) USB:318(318,0) WIFI:266(316,50) PA:268(326,50) LRF:-888(-888) LRB:-888(-888) 
+03-17 13:02:06.622  8774  8774 I Finsky  : [2] App states replicator found 15 unowned apps
+03-17 13:02:06.639  8774  8820 I Finsky  : [55980] Completed 0 account content syncs with 0 successful.
+03-17 13:02:06.639  8774  8774 I Finsky  : [2] [ContentSync] Installation state replication succeeded.
+03-17 13:02:06.639  8774  8774 I Finsky  : [2] SCH: jobFinished: 12-1. TimeElapsed: 4141ms.
+03-17 13:02:06.640  8774  8774 I Finsky  : [2] WM::SCH: Logging work end for 12-1
+03-17 13:02:06.666  8774  8821 I Finsky  : [55981] SCH: Scheduling phonesky job Id: 1-1337, CT: 1773695675139, Constraints: [{ L: 42521350, D: 85721350, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+03-17 13:02:06.666  8774  8821 I Finsky  : [55981] SCH: Scheduling phonesky job Id: 34-49, CT: 1773695681622, Constraints: [{ L: 604800000, D: 2447133100, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+03-17 13:02:06.667  8774  8821 I Finsky  : [55981] SCH: Scheduling phonesky job Id: 34-53, CT: 1773695681623, Constraints: [{ L: 604800000, D: 2526684537, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+03-17 13:02:06.667  8774  8821 I Finsky  : [55981] SCH: Scheduling phonesky job Id: 34-59, CT: 1773709868855, Constraints: [{ L: 79199841, D: 1375199841, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+03-17 13:02:06.667  8774  8821 I Finsky  : [55981] SCH: Scheduling phonesky job Id: 34-60, CT: 1773709869070, Constraints: [{ L: 604800000, D: 2591999852, C: CHARGING_NONE, I: IDLE_NONE, N: NET_ANY, B: BATTERY_ANY }]
+03-17 13:02:06.675  8774  8812 I Finsky  : [55971] SCH: Scheduling 1 system job(s)
+03-17 13:02:06.676  8774  8812 I Finsky  : [55971] SCH: Scheduling system job Id: 9587, L: 14469814, D: 57669814, C: false, I: false, N: 1
+03-17 13:02:06.705  8774 32257 I Finsky  : [56169] SCH: job service finished with id 9581.
+03-17 13:02:06.760  2430  2430 I io_stats: !@   8,0 r 2422917 123806068 w 2132180 110914800 d 153952 193870048 f 492570 503789 iot 2342688 1863606 th 102400 0 0 pt 0 inp 0 0 546521.157
+03-17 13:02:07.181  1043  1330 D WifiConnectivityMonitor.NetworkStatsAnalyzer: Backhaul result - RSSI:-30, CE:3, PE:3, TI:8, PTI:8, TW:1, PTW:1, Tx:1, Rx:2, TxS:0, RxS:0, RESULT:true, IC:1, ICT:5, WC:2, WCT:5, R:0, RC:0, IE:0, EC:0
+03-17 13:02:08.723  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:08.730  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232739)
+03-17 13:02:08.733  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 13:02:08.762   513   513 I SurfaceFlinger: SFWD update time=546523159325980
+03-17 13:02:10.381  1043  1071 E Watchdog: !@Sync: 18207 heap: 84 / 84 [2026-03-17 13:02:10.381] sdogWay: softdog
+03-17 13:02:10.550  1043  1057 I system_server: Background young concurrent copying GC freed 247761(19MB) AllocSpace objects, 270(9064KB) LOS objects, 29% free, 56MB/80MB, paused 1.092ms total 178.614ms
+03-17 13:02:10.563  1043  1059 W System  : A resource failed to call end. 
+03-17 13:02:11.764  2430  2430 I io_stats: !@   8,0 r 2422917 123806068 w 2132224 110915108 d 153954 193870068 f 492574 503793 iot 2342696 1863615 th 102400 0 0 pt 0 inp 0 0 546526.160
+03-17 13:02:11.806  2246  3170 D ContactsProvider_EventLog: contents_sample_state: [CONTACT contacts(2) data(8) accounts({vnd.sec.contact.sim (2)=4}) accounts deleted({}) in_trash(in_trash(0), in_trash_for_sync(0)) calls([]) countryIso(TW) userId(0)  ]
+
+03-17 13:02:11.806  2246  3170 D ContactsProvider_EventLog: contents_sample_state: [ agr({[2 ,2]=2})  ]
+
+03-17 13:02:11.806  2246  3170 D ContactsProvider_EventLog: contents_sample_state: [ actCnt({android.process.acore(2246)=1})  ]
+
+03-17 13:02:11.806  2246  3170 D ContactsProvider_EventLog: contents_sample_state: [PROFILE contacts(0) data(0) accounts({})  ] [SAPROFILE contacts(0) data(0) accounts({})  ]
+
+03-17 13:02:11.806  2246  3170 D ContactsProvider_EventLog: contents_sample_state: [STORAGE Contacts(CE) Profile(CE) SAProfile(CE) CallLog(CE)  ]
+03-17 13:02:11.828  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:11.835  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232740)
+03-17 13:02:11.837  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 13:02:12.738  2645  2645 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.libs.gmscorelogger.service.START dat=chimera-action: cmp=com.google.android.gms/.chimera.PersistentDirectBootAwareApiService }
+03-17 13:02:12.831 32301 32301 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+03-17 13:02:12.834 32301 32301 I AndroidRuntime: Using default boot image
+03-17 13:02:12.834 32301 32301 I AndroidRuntime: Leaving lock profiling enabled
+03-17 13:02:12.834 32301 32301 D SecNativeFeatureCppIf: encoded
+03-17 13:02:12.834 32301 32301 D SecNativeFeatureCppIf: decoding and unzip finish
+03-17 13:02:12.834 32301 32301 D SecNativeFeatureCppIf: use unCompDataBuff. encoded
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: Free unCompDataBuff
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: encoded
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: decoding and unzip finish
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: use unCompDataBuff. encoded
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: Free unCompDataBuff
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: encoded
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: decoding and unzip finish
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: use unCompDataBuff. encoded
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: Free unCompDataBuff
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: encoded
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: decoding and unzip finish
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: use unCompDataBuff. encoded
+03-17 13:02:12.835 32301 32301 D SecNativeFeatureCppIf: Free unCompDataBuff
+03-17 13:02:12.835 32301 32301 D AndroidRuntime: addProductProperty
+03-17 13:02:12.835 32301 32301 D AndroidRuntime: addProductProperty: pBrand1 != NULL
+03-17 13:02:12.835 32301 32301 D AndroidRuntime: addProductProperty: else
+03-17 13:02:12.909 32301 32301 D ICU     : Time zone APEX file found: /apex/com.android.tzdata/etc/icu/icu_tzdata.dat
+03-17 13:02:12.916 32301 32301 I app_process: The ClassLoaderContext is a special shared library.
+03-17 13:02:12.936 32301 32301 W app_process: JNI RegisterNativeMethods: attempt to register 0 native methods for android.media.AudioAttributes
+03-17 13:02:12.937 32301 32301 E SemAffinityControl: SemAffinityControl: registerfunction enter
+03-17 13:02:12.941 32301 32301 D AndroidRuntime: Calling main entry com.android.commands.input.Input
+03-17 13:02:12.945  1043  1354 D InputDispatcher: Inject motion (32301): action=0x0, time=546527339000000, f=0x0, d=0
+03-17 13:02:12.946  1043  1232 D InputDispatcher: pointer touchable region used!
+03-17 13:02:12.946  1043  1232 I InputDispatcher: Delivering touch to (1396): action: 0x4, f=0x0, d=0, 'a3ae33b', t=0
+03-17 13:02:12.946  1043  1232 I InputDispatcher: Delivering touch to (1396): action: 0x4, f=0x0, d=0, 'e89f9a9', t=0
+03-17 13:02:12.946  1043  1232 I InputDispatcher: Delivering touch to (30602): action: 0x0, f=0x0, d=0, 'ff21f45', t=0
+03-17 13:02:12.947  1043  1232 D PowerManagerService: [api] userActivityFromNative : 10 (event: 2 flags: 0) eventTime = 546527339
+03-17 13:02:12.947 30602 30602 I ViewRootImpl@b433e60[MainActivity]: ViewPostIme pointer 0
+03-17 13:02:12.954  1043  1354 D InputDispatcher: Inject motion (32301): action=0x1, time=546527339000000, f=0x0, d=0
+03-17 13:02:12.954  1043  1232 I InputDispatcher: Delivering touch to (30602): action: 0x1, f=0x0, d=0, 'ff21f45', t=0
+03-17 13:02:13.130 30602 30602 I ViewRootImpl@b433e60[MainActivity]: ViewPostIme pointer 1
+03-17 13:02:13.134 32301 32301 D AndroidRuntime: Shutting down VM
+03-17 13:02:13.199 30602 30602 I flutter : --- BUTTON TAPPED ---
+03-17 13:02:13.205 30602 30602 I flutter : --- _runAgent START ---
+03-17 13:02:13.503   513   513 I SurfaceFlinger: SFWD update time=546527900855630
+03-17 13:02:14.999  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:15.006  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232756)
+03-17 13:02:15.008  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 13:02:15.041  2335 32333 W ProxyAndroidLoggerBackend: Too many Flogger logs received before configuration. Dropping old logs.
+03-17 13:02:15.043  2335 32333 I chatty  : uid=10342(com.cbstudio.garbage_truck) identical 3 lines
+03-17 13:02:15.046  2335 32333 W ProxyAndroidLoggerBackend: Too many Flogger logs received before configuration. Dropping old logs.
+03-17 13:02:16.186  1043  1213 D SamsungAlarmManager: Expired : 8
+03-17 13:02:16.186  1043  1213 V SamsungAlarmManager: Sending to uid : 1000 listener=android.app.AlarmManager$ListenerWrapper@937397b alarm=Alarm{292398 type 3 when 775944662 android}
+03-17 13:02:16.187  1043  1545 D SLocation: SPManager - SP is not support Q OS upgrade model!
+03-17 13:02:16.192  1043  1213 I SamsungAlarmManager: setLocked to kernel - T:2 / 20260317T131236, SetElapsed=776565257, nowELAPSED=775944668
+03-17 13:02:16.194  1043  1213 I SamsungAlarmManager: setLocked to kernel - T:3 / 20260317T130300, SetElapsed=775988477, nowELAPSED=775944670
+03-17 13:02:16.195  1043  1545 D SamsungAlarmManager: setExact Listener (T:3/F:9/AC:false) 20260317T130316 - CU:1000/CP:1043
+03-17 13:02:16.195  1043  1545 I SamsungAlarmManager: setLocked to kernel - T:2 / 20260317T131236, SetElapsed=776565257, nowELAPSED=775944672
+03-17 13:02:16.196  1043  1545 I SamsungAlarmManager: setLocked to kernel - T:3 / 20260317T130300, SetElapsed=775988477, nowELAPSED=775944672
+03-17 13:02:16.521  2858  3450 D SDHMS:com.sec.android.sdhms.thermal.siop.B: SIOP:: AP:241(355,100) BAT:322(322,0) CHG:342(342,0) USB:318(318,0) WIFI:266(317,50) PA:269(324,50) LRF:-888(-888) LRB:-888(-888) 
+03-17 13:02:16.768  2430  2430 I io_stats: !@   8,0 r 2422923 123806244 w 2132238 110915236 d 153954 193870068 f 492575 503794 iot 2342708 1863620 th 102400 0 0 pt 0 inp 0 0 546531.164
+03-17 13:02:17.191  1043  1330 D WifiConnectivityMonitor.NetworkStatsAnalyzer: Backhaul result - RSSI:-30, CE:3, PE:3, TI:9, PTI:8, TW:1, PTW:1, Tx:3, Rx:1, TxS:1, RxS:0, RESULT:true, IC:2, ICT:5, WC:3, WCT:5, R:0, RC:0, IE:0, EC:0
+03-17 13:02:17.265  1043  1073 D PowerManagerService: [api] setDeviceIdleTempWhitelist: appids:  (uid: 1000 pid: 1043)
+03-17 13:02:18.097  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:18.104  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232740)
+03-17 13:02:18.106  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 13:02:18.129   513   513 I SurfaceFlinger: SFWD update time=546532526503665
+03-17 13:02:18.283  2858  2905 I c.android.sdhm: Background concurrent copying GC freed 30174(2597KB) AllocSpace objects, 175(3500KB) LOS objects, 51% free, 5847KB/11MB, paused 159us total 104.234ms
+03-17 13:02:18.288  2858  2912 W System  : A resource failed to call close. 
+03-17 13:02:18.291  2858  2912 I chatty  : uid=1000(system) FinalizerDaemon identical 2 lines
+03-17 13:02:18.292  2858  2912 W System  : A resource failed to call close. 
+03-17 13:02:21.199  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:21.773  2430  2430 I io_stats: !@   8,0 r 2422923 123806244 w 2132243 110915300 d 153955 193870072 f 492576 503795 iot 2342708 1863623 th 102400 0 0 pt 0 inp 0 0 546536.169
+03-17 13:02:24.291   513   513 I SurfaceFlinger: SFWD update time=546538688251276
+03-17 13:02:24.304  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:24.313  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232739)
+03-17 13:02:24.315  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 13:02:25.050  2335 32345 W ProxyAndroidLoggerBackend: Too many Flogger logs received before configuration. Dropping old logs.
+03-17 13:02:25.058  2335 32345 I chatty  : uid=10342(com.cbstudio.garbage_truck) identical 2 lines
+03-17 13:02:25.059  2335 32345 W ProxyAndroidLoggerBackend: Too many Flogger logs received before configuration. Dropping old logs.
+03-17 13:02:26.577  2858  3450 D SDHMS:com.sec.android.sdhms.thermal.siop.B: SIOP:: AP:242(344,100) BAT:322(322,0) CHG:338(338,0) USB:318(318,0) WIFI:267(317,50) PA:270(323,50) LRF:-888(-888) LRB:-888(-888) 
+03-17 13:02:26.778  2430  2430 I io_stats: !@   8,0 r 2422923 123806244 w 2132257 110915516 d 153956 193870200 f 492577 503796 iot 2342716 1863628 th 102400 0 0 pt 0 inp 0 0 546541.174
+03-17 13:02:27.201  1043  1330 D WifiConnectivityMonitor.NetworkStatsAnalyzer: Backhaul result - RSSI:-31, CE:3, PE:3, TI:9, PTI:9, TW:1, PTW:1, Tx:1, Rx:4, TxS:0, RxS:0, RESULT:true, IC:2, ICT:5, WC:4, WCT:5, R:0, RC:0, IE:0, EC:0
+03-17 13:02:27.400  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:29.300   513   513 I SurfaceFlinger: SFWD update time=546543697478273
+03-17 13:02:29.332  1728  2826 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.332  1728  2826 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.332  1728  2828 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.333  1728  1728 I EPDG -- [EpdgInterfaceController]: Not Mobile Interface. Ignoring Interface Address Updated Event
+03-17 13:02:29.333  1728  2822 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.333  1728  1728 I EPDG -- [EpdgInterfaceController]: Not Mobile Interface. Ignoring Interface Address Updated Event
+03-17 13:02:29.333  1728  2822 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.333  1728  2828 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.334  1728  1728 I EPDG -- [EpdgInterfaceController]: Not Mobile Interface. Ignoring Interface Address Updated Event
+03-17 13:02:29.334  1728  1728 I EPDG -- [EpdgInterfaceController]: Not Mobile Interface. Ignoring Interface Address Updated Event
+03-17 13:02:29.335  1728  2166 I EPDG -- SIM0 [EpdgSubScription]: EpdgAddressUpdated: address: 2001:b011:9:559f:64be:eeff:fe9a:fd76 iface: wlan0mFqdnRetryCount : 0
+03-17 13:02:29.336  1728  2166 I EPDG -- SIM0 [EpdgSubScription]: EpdgAddressUpdated: address: 2001:b011:9:559f:a086:fed1:3070:8746 iface: wlan0mFqdnRetryCount : 0
+03-17 13:02:29.336   495   495 D WifiHAL : Setting APF program, halHandle = 0x717060d7c0
+03-17 13:02:29.336   495   495 I WifiHAL : 
+03-17 13:02:29.336   495   495 I WifiHAL : createRequest: APF set program request
+03-17 13:02:29.337  1728  1766 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.338  1728  1766 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.338  1728  2822 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.339  1728  2822 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.339  1728  2828 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.339  1728  2828 D EPDG -- [NETMGMT]: Interface wlan0 address updated
+03-17 13:02:29.340  1728  2166 I EPDG -- SIM0 [EpdgSubScription]: EpdgAddressUpdated: address: 2001:b011:9:559f:6d68:923a:f986:a233 iface: wlan0mFqdnRetryCount : 0
+03-17 13:02:29.340  1728  1728 I EPDG -- [EpdgInterfaceController]: Not Mobile Interface. Ignoring Interface Address Updated Event
+03-17 13:02:29.340  1728  2166 I EPDG -- SIM0 [EpdgSubScription]: EpdgAddressUpdated: address: 2001:b011:9:559f:849b:7d54:124b:133a iface: wlan0mFqdnRetryCount : 0
+03-17 13:02:29.340  1728  1728 I EPDG -- [EpdgInterfaceController]: Not Mobile Interface. Ignoring Interface Address Updated Event
+03-17 13:02:29.340  1728  1728 I chatty  : uid=1000(system) com.sec.epdg identical 1 line
+03-17 13:02:29.340  1728  1728 I EPDG -- [EpdgInterfaceController]: Not Mobile Interface. Ignoring Interface Address Updated Event
+03-17 13:02:29.347   495   495 I WifiHAL : Done!
+03-17 13:02:29.558  1043 32359 D WifiConnectivityMonitor.DnsPingerHandler: setCurrentLinkProperties: lp={InterfaceName: wlan0 LinkAddresses: [ fe80::64be:eeff:fe9a:fd76/64,192.168.1.139/24,2001:b011:9:559f:64be:eeff:fe9a:fd76/64,2001:b011:9:559f:849b:7d54:124b:133a/64,2001:b011:9:559f:6d68:923a:f986:a233/64,2001:b011:9:559f:a086:fed1:3070:8746/64 ] DnsAddresses: [ /2001:b000:168::1,/2001:b000:168::2,/192.168.1.1 ] Domains: null MTU: 0 TcpBufferSizes: 524288,1048576,4194304,524288,1048576,4194304 Routes: [ fe80::/64 -> :: wlan0,2001:b011:9:559f::/64 -> fe80::fe12:63ff:fe17:d710 wlan0,2001:b011:9:559f::/64 -> :: wlan0,::/0 -> fe80::fe12:63ff:fe17:d710 wlan0,192.168.1.0/24 -> 0.0.0.0 wlan0,0.0.0.0/0 -> 192.168.1.1 wlan0 ]}
+03-17 13:02:29.881  1043 32360 D WifiConnectivityMonitor.DnsThread:  [|214] [] []
+03-17 13:02:29.883  1043  1330 D WifiConnectivityMonitor: DNS resultType : 0, responseTime : 214
+03-17 13:02:29.884  1043  1329 D WifiConnectivityMonitor: updateBssidLatestDnsResultType - result: 0
+03-17 13:02:29.945  3387  3429 D [AirCmd]_BleSpenBleDriver: GattCallback : onCharacteristicChanged : 68:A8:E1:66:B2:F6 / UUID_BATTERY_LEVEL, PERM=0, RAWDATA : [80 0]DESC_CNT=2 [ DESC : UUID_CHARACTERISTIC_CONFIG, [1 0]] [ DESC : UNKNOWN_UUID, [nodata]] 
+03-17 13:02:29.948  3387  3429 I [AirCmd]_BleSpenGenericDriver: onCharacteristicChanged : Battery:80
+03-17 13:02:29.948  3387  3429 D [AirCmd]_HqmManager: notifyBatteryLevelChanged : Battery level changed abnormally. before=90, after=80
+03-17 13:02:29.949  3387  3387 D [AirCmd]_RemoteSpenMainController: updateNotification : curConnState=CONNECTED, implicit=false / START_AUTO_CONNECTION
+03-17 13:02:29.953  3387  3387 D [AirCmd]_IndicatorController: hideIcon
+03-17 13:02:30.504  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:30.511  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232740)
+03-17 13:02:30.514  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 13:02:31.783  2430  2430 I io_stats: !@   8,0 r 2422923 123806244 w 2132264 110915548 d 153956 193870200 f 492577 503796 iot 2342720 1863629 th 102400 0 0 pt 0 inp 0 0 546546.178
+03-17 13:02:32.141  1043  1285 D DeviceStorageMonitorService: check() STORAGE TOTAL > 64G
+03-17 13:02:32.144  1043  1285 W DeviceStorageMonitorService: updateBroadcasts(/data) oldLevel:0, newLevel:0, seq:1
+03-17 13:02:32.145  1043  1285 W DeviceStorageMonitorService: There is no file /sys/fs/f2fs/userdata/sec_fs_stat
+03-17 13:02:32.145  1043  1285 W DeviceStorageMonitorService: updateBroadcasts_filenode(/data) fn_oldLevel:0, fn_newLevel:0, seq:1
+03-17 13:02:33.595  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:33.603  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232739)
+03-17 13:02:33.604  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 13:02:33.641   513   513 I SurfaceFlinger: SFWD update time=546548038647654
+03-17 13:02:36.633  2858  3450 D SDHMS:com.sec.android.sdhms.thermal.siop.B: SIOP:: AP:242(339,100) BAT:322(322,0) CHG:335(335,0) USB:318(318,0) WIFI:267(318,50) PA:270(321,50) LRF:-888(-888) LRB:-888(-888) 
+03-17 13:02:36.697  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:36.702  1396  1396 D SecStatusBarWifiView: updateState: WifiIconState(resId=2131232734, visible=true, activityId=2131232740)
+03-17 13:02:36.703  1396  1845 D Tile.WifiTile: handleUpdateState isTransient=false transientEnabling =false cb.isTransient=false state.state = 2 mStateBeforeClick.value =false enabled =true
+03-17 13:02:36.788  2430  2430 I io_stats: !@   8,0 r 2422923 123806244 w 2132271 110915620 d 153956 193870200 f 492578 503797 iot 2342724 1863631 th 102400 0 0 pt 0 inp 0 0 546551.183
+03-17 13:02:37.211  1043  1330 D WifiConnectivityMonitor.NetworkStatsAnalyzer: Backhaul result - RSSI:-29, CE:3, PE:3, TI:9, PTI:9, TW:1, PTW:1, Tx:5, Rx:12, TxS:0, RxS:0, RESULT:true, IC:2, ICT:5, WC:5, WCT:5, R:0, RC:0, IE:0, EC:0
+03-17 13:02:39.301   513   513 I SurfaceFlinger: SFWD update time=546553698545958
+03-17 13:02:39.798  1043  1267 D TelephonyManager: getAllCellInfo : Caller (PID / UID / TID): 1043 / 1000 / 1267
+03-17 13:02:40.386  1043  1071 E Watchdog: !@Sync: 18208 heap: 63 / 80 [2026-03-17 13:02:40.386] sdogWay: softdog
+03-17 13:02:41.792  2430  2430 I io_stats: !@   8,0 r 2422923 123806244 w 2132280 110915772 d 153958 193870208 f 492580 503800 iot 2342732 1863637 th 102400 0 0 pt 0 inp 0 0 546556.188

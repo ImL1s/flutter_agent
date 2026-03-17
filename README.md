@@ -23,7 +23,13 @@
 
 > An LLM autonomously operating a Todo app — adding items, typing text, and toggling checkboxes. **No coordinates. No pixel matching. Pure semantic understanding.**
 
-https://github.com/ImL1s/flutter_agent/raw/master/assets/demo.mp4
+<p align="center">
+  <img src="assets/demo.gif" width="300" alt="AI Agent operating a Todo app" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/ImL1s/flutter_agent/releases/download/v0.1.3/demo.mp4">📥 Watch full demo video (MP4)</a>
+</p>
 
 ---
 

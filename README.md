@@ -23,15 +23,7 @@
 
 > An LLM autonomously operating a Todo app — adding items, typing text, and toggling checkboxes. **No coordinates. No pixel matching. Pure semantic understanding.**
 
-<p align="center">
-  <video src="https://github.com/ImL1s/flutter_agent/raw/master/assets/demo.mp4" width="300" controls autoplay muted loop>
-    Your browser does not support the video tag.
-  </video>
-</p>
-
-<p align="center">
-  <em>The agent reads the Semantics tree, plans actions via LLM tool-calls, and executes them — all without knowing a single pixel coordinate.</em>
-</p>
+https://github.com/ImL1s/flutter_agent/raw/master/assets/demo.mp4
 
 ---
 

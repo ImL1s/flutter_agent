@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="ai_flutter_agent library API docs, for the Dart programming language.">
+  <title>ai_flutter_agent library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">ai_flutter_agent</a></li>
+    <li class="self-crumb">ai_flutter_agent.dart</li>
+  </ol>
+  <div class="self-name">ai_flutter_agent</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar=""
+    data-below-sidebar="ai_flutter_agent&#47;ai_flutter_agent-library-sidebar.html">
+  
+    <div>
+      
+
+      <h1>
+        <span class="kind-library">ai_flutter_agent</span>
+        library 
+ 
+
+      </h1>
+    </div>
+
+    
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+      <dl>
+          <dt id="ActionDescriptor">
+  <span class="name "><a href="../ai_flutter_agent/ActionDescriptor-class.html">ActionDescriptor</a></span> 
+
+</dt>
+<dd>
+  Describes an action the LLM wants to execute on the UI.
+</dd>
+
+          <dt id="ActionDispatcher">
+  <span class="name "><a href="../ai_flutter_agent/ActionDispatcher-class.html">ActionDispatcher</a></span> 
+
+</dt>
+<dd>
+  Dispatches <a href="../ai_flutter_agent/ActionDescriptor-class.html">ActionDescriptor</a>s to their handlers after resolving target nodes.
+</dd>
+
+          <dt id="ActionRegistry">
+  <span class="name "><a href="../ai_flutter_agent/ActionRegistry-class.html">ActionRegistry</a></span> 
+
+</dt>
+<dd>
+  Manages the set of actions available to the agent.
+</dd>
+
+          <dt id="AgentCallbacks">
+  <span class="name "><a href="../ai_flutter_agent/AgentCallbacks-class.html">AgentCallbacks</a></span> 
+
+</dt>
+<dd>
+  Callback hooks for observing <a href="../ai_flutter_agent/AgentCore-class.html">AgentCore</a> execution.
+</dd>
+
+          <dt id="AgentConfig">
+  <span class="name "><a href="../ai_flutter_agent/AgentConfig-class.html">AgentConfig</a></span> 
+
+</dt>
+<dd>
+  Configuration for the <a href="../ai_flutter_agent/AgentCore-class.html">AgentCore</a>.
+</dd>
+
+          <dt id="AgentCore">
+  <span class="name "><a href="../ai_flutter_agent/AgentCore-class.html">AgentCore</a></span> 
+
+</dt>
+<dd>
+  Main orchestrator for the Flutter Agent framework.
+</dd>
+
+          <dt id="AgentOverlayState">
+  <span class="name "><a href="../ai_flutter_agent/AgentOverlayState-class.html">AgentOverlayState</a></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="AgentOverlayWidget">
+  <span class="name "><a href="../ai_flutter_agent/AgentOverlayWidget-class.html">AgentOverlayWidget</a></span> 
+
+</dt>
+<dd>
+  Widget wrapper that ensures semantics are enabled for the agent.
+</dd>
+
+          <dt id="AgentState">
+  <span class="name "><a href="../ai_flutter_agent/AgentState-class.html">AgentState</a></span> 
+
+</dt>
+<dd>
+  Mutable state of the running <a href="../ai_flutter_agent/AgentCore-class.html">AgentCore</a>.
+</dd>
+
+          <dt id="AuditEntry">
+  <span class="name "><a href="../ai_flutter_agent/AuditEntry-class.html">AuditEntry</a></span> 
+
+</dt>
+<dd>
+  Audit log entry recording a single agent action.
+</dd>
+
+          <dt id="AuditLog">
+  <span class="name "><a href="../ai_flutter_agent/AuditLog-class.html">AuditLog</a></span> 
+
+</dt>
+<dd>
+  Records all actions executed by the agent for auditing and debugging.
+</dd>
+
+          <dt id="AutoApproveConsentHandler">
+  <span class="name "><a href="../ai_flutter_agent/AutoApproveConsentHandler-class.html">AutoApproveConsentHandler</a></span> 
+
+</dt>
+<dd>
+  Always-approve consent handler for testing or trusted environments.
+</dd>
+
+          <dt id="AutoDenyConsentHandler">
+  <span class="name "><a href="../ai_flutter_agent/AutoDenyConsentHandler-class.html">AutoDenyConsentHandler</a></span> 
+
+</dt>
+<dd>
+  Always-deny consent handler for locked-down environments.
+</dd>
+
+          <dt id="BuiltInActions">
+  <span class="name "><a href="../ai_flutter_agent/BuiltInActions-class.html">BuiltInActions</a></span> 
+
+</dt>
+<dd>
+  Registers standard built-in actions that map to Flutter <a href="https://api.flutter.dev/flutter/dart-ui/SemanticsAction-class.html">SemanticsAction</a>s.
+</dd>
+
+          <dt id="ConsentHandler">
+  <span class="name "><a href="../ai_flutter_agent/ConsentHandler-class.html">ConsentHandler</a></span> 
+
+</dt>
+<dd>
+  Strategy for requesting user consent before agent actions.
+</dd>
+
+          <dt id="ConversationHistory">
+  <span class="name "><a href="../ai_flutter_agent/ConversationHistory-class.html">ConversationHistory</a></span> 
+
+</dt>
+<dd>
+  Manages multi-turn conversation history for LLM interactions.
+</dd>
+
+          <dt id="CustomPromptTemplate">
+  <span class="name "><a href="../ai_flutter_agent/CustomPromptTemplate-class.html">CustomPromptTemplate</a></span> 
+
+</dt>
+<dd>
+  User-customizable prompt template with placeholder substitution.
+</dd>
+
+          <dt id="DebugEvent">
+  <span class="name "><a href="../ai_flutter_agent/DebugEvent-class.html">DebugEvent</a></span> 
+
+</dt>
+<dd>
+  A single debug event with metadata.
+</dd>
+
+          <dt id="DebugLogStream">
+  <span class="name "><a href="../ai_flutter_agent/DebugLogStream-class.html">DebugLogStream</a></span> 
+
+</dt>
+<dd>
+  Streams agent debug events for UI binding.
+</dd>
+
+          <dt id="DefaultPromptTemplate">
+  <span class="name "><a href="../ai_flutter_agent/DefaultPromptTemplate-class.html">DefaultPromptTemplate</a></span> 
+
+</dt>
+<dd>
+  Default prompt template matching the original Planner.buildPrompt() format.
+</dd>
+
+          <dt id="ExecutionResult">
+  <span class="name "><a href="../ai_flutter_agent/ExecutionResult-class.html">ExecutionResult</a></span> 
+
+</dt>
+<dd>
+  Result of executing a single action.
+</dd>
+
+          <dt id="Executor">
+  <span class="name "><a href="../ai_flutter_agent/Executor-class.html">Executor</a></span> 
+
+</dt>
+<dd>
+  Executes <a href="../ai_flutter_agent/ActionDescriptor-class.html">ActionDescriptor</a>s against the <a href="../ai_flutter_agent/ActionRegistry-class.html">ActionRegistry</a>.
+</dd>
+
+          <dt id="IsolateLLMClient">
+  <span class="name "><a href="../ai_flutter_agent/IsolateLLMClient-class.html">IsolateLLMClient</a></span> 
+
+</dt>
+<dd>
+  Wraps any <a href="../ai_flutter_agent/LLMClient-class.html">LLMClient</a> to execute LLM requests in a Dart <a href="https://api.flutter.dev/flutter/dart-isolate/Isolate-class.html">Isolate</a>.
+</dd>
+
+          <dt id="LLMClient">
+  <span class="name "><a href="../ai_flutter_agent/LLMClient-class.html">LLMClient</a></span> 
+
+</dt>
+<dd>
+  Abstract interface for LLM communication.
+</dd>
+
+          <dt id="Macro">
+  <span class="name "><a href="../ai_flutter_agent/Macro-class.html">Macro</a></span> 
+
+</dt>
+<dd>
+  A named, replayable sequence of actions.
+</dd>
+
+          <dt id="MacroRecorder">
+  <span class="name "><a href="../ai_flutter_agent/MacroRecorder-class.html">MacroRecorder</a></span> 
+
+</dt>
+<dd>
+  Records a sequence of <a href="../ai_flutter_agent/ActionDescriptor-class.html">ActionDescriptor</a>s as a replayable macro.
+</dd>
+
+          <dt id="MacroStore">
+  <span class="name "><a href="../ai_flutter_agent/MacroStore-class.html">MacroStore</a></span> 
+
+</dt>
+<dd>
+  Stores and retrieves macros as JSON strings.
+</dd>
+
+          <dt id="NodeResolver">
+  <span class="name "><a href="../ai_flutter_agent/NodeResolver-class.html">NodeResolver</a></span> 
+
+</dt>
+<dd>
+  Resolves <a href="../ai_flutter_agent/WidgetDescriptor-class.html">WidgetDescriptor</a> nodes from a tree using a <a href="../ai_flutter_agent/Selector-class.html">Selector</a>.
+</dd>
+
+          <dt id="OpenAILLMClient">
+  <span class="name "><a href="../ai_flutter_agent/OpenAILLMClient-class.html">OpenAILLMClient</a></span> 
+
+</dt>
+<dd>
+  OpenAI API implementation of <a href="../ai_flutter_agent/LLMClient-class.html">LLMClient</a>.
+</dd>
+
+          <dt id="Planner">
+  <span class="name "><a href="../ai_flutter_agent/Planner-class.html">Planner</a></span> 
+
+</dt>
+<dd>
+  Constructs LLM prompts from the current UI state and parses responses.
+</dd>
+
+          <dt id="PromptTemplate">
+  <span class="name "><a href="../ai_flutter_agent/PromptTemplate-class.html">PromptTemplate</a></span> 
+
+</dt>
+<dd>
+  Abstract interface for prompt formatting strategies.
+</dd>
+
+          <dt id="RetryExecutor">
+  <span class="name "><a href="../ai_flutter_agent/RetryExecutor-class.html">RetryExecutor</a></span> 
+
+</dt>
+<dd>
+  Executes an async function with automatic retry and exponential backoff.
+</dd>
+
+          <dt id="Selector">
+  <span class="name "><a href="../ai_flutter_agent/Selector-class.html">Selector</a></span> 
+
+</dt>
+<dd>
+  Defines how to locate a target node in the semantics tree.
+</dd>
+
+          <dt id="SemanticsActionExecutor">
+  <span class="name "><a href="../ai_flutter_agent/SemanticsActionExecutor-class.html">SemanticsActionExecutor</a></span> 
+
+</dt>
+<dd>
+  Bridge between agent actions and Flutter's semantics performAction API.
+</dd>
+
+          <dt id="SemanticTreeWalker">
+  <span class="name "><a href="../ai_flutter_agent/SemanticTreeWalker-class.html">SemanticTreeWalker</a></span> 
+
+</dt>
+<dd>
+  Traverses Flutter's live <a href="https://api.flutter.dev/flutter/semantics/SemanticsNode-class.html">SemanticsNode</a> tree and produces
+a <a href="../ai_flutter_agent/WidgetDescriptor-class.html">WidgetDescriptor</a> tree for the agent.
+</dd>
+
+          <dt id="SensitiveDataMasker">
+  <span class="name "><a href="../ai_flutter_agent/SensitiveDataMasker-class.html">SensitiveDataMasker</a></span> 
+
+</dt>
+<dd>
+  Masks sensitive data in <a href="../ai_flutter_agent/WidgetDescriptor-class.html">WidgetDescriptor</a> trees before sending to LLM.
+</dd>
+
+          <dt id="StreamingLLMClient">
+  <span class="name "><a href="../ai_flutter_agent/StreamingLLMClient-class.html">StreamingLLMClient</a></span> 
+
+</dt>
+<dd>
+  Extension of <a href="../ai_flutter_agent/LLMClient-class.html">LLMClient</a> that supports streaming responses.
+</dd>
+
+          <dt id="VerificationDetail">
+  <span class="name "><a href="../ai_flutter_agent/VerificationDetail-class.html">VerificationDetail</a></span> 
+
+</dt>
+<dd>
+  Structured diff result showing exactly what changed between two UI trees.
+</dd>
+
+          <dt id="Verifier">
+  <span class="name "><a href="../ai_flutter_agent/Verifier-class.html">Verifier</a></span> 
+
+</dt>
+<dd>
+  Verifies that agent actions had the intended effect on the UI.
+</dd>
+
+          <dt id="WidgetDescriptor">
+  <span class="name "><a href="../ai_flutter_agent/WidgetDescriptor-class.html">WidgetDescriptor</a></span> 
+
+</dt>
+<dd>
+  Represents a single node in the UI semantics tree.
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="enums">
+      <h2>Enums</h2>
+      <dl>
+          <dt id="AgentStatus">
+  <span class="name "><a href="../ai_flutter_agent/AgentStatus.html">AgentStatus</a></span> 
+
+</dt>
+<dd>
+  Represents the current status of the agent.
+</dd>
+
+          <dt id="DebugEventType">
+  <span class="name "><a href="../ai_flutter_agent/DebugEventType.html">DebugEventType</a></span> 
+
+</dt>
+<dd>
+  Types of debug events.
+</dd>
+
+          <dt id="SelectorType">
+  <span class="name "><a href="../ai_flutter_agent/SelectorType.html">SelectorType</a></span> 
+
+</dt>
+<dd>
+  Strategy for locating a target <a href="https://api.flutter.dev/flutter/semantics/SemanticsNode-class.html">SemanticsNode</a>.
+</dd>
+
+          <dt id="VerificationResult">
+  <span class="name "><a href="../ai_flutter_agent/VerificationResult.html">VerificationResult</a></span> 
+
+</dt>
+<dd>
+  Result of a post-action verification check.
+</dd>
+
+      </dl>
+    </section>
+
+
+
+
+
+
+
+    <section class="summary offset-anchor" id="typedefs">
+      <h2>Typedefs</h2>
+      <dl>
+          
+  <dt id="ActionFunction" class="callable">
+    <span class="name"><a href="../ai_flutter_agent/ActionFunction.html">ActionFunction</a></span><span class="signature">
+      <span class="returntype parameter">= <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span> Function<span class="signature">(<span class="parameter" id="param-args"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">args</span></span>)</span></span>
+    </span>
+    
+
+  </dt>
+  <dd>
+    Callback signature for registered actions.
+    
+
+  </dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="exceptions">
+      <h2>Exceptions / Errors</h2>
+      <dl>
+          <dt id="LLMException">
+  <span class="name "><a href="../ai_flutter_agent/LLMException-class.html">LLMException</a></span> 
+
+</dt>
+<dd>
+  Exception thrown when LLM communication fails.
+</dd>
+
+          <dt id="UnregisteredActionException">
+  <span class="name "><a href="../ai_flutter_agent/UnregisteredActionException-class.html">UnregisteredActionException</a></span> 
+
+</dt>
+<dd>
+  Thrown when attempting to execute an action not in the registry (whitelist).
+</dd>
+
+          <dt id="UnsupportedActionException">
+  <span class="name "><a href="../ai_flutter_agent/UnsupportedActionException-class.html">UnsupportedActionException</a></span> 
+
+</dt>
+<dd>
+  Thrown when an unsupported action name is requested.
+</dd>
+
+      </dl>
+    </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">ai_flutter_agent</a></li>
+    <li class="self-crumb">ai_flutter_agent.dart</li>
+</ol>
+
+    <h5><span class="package-name">ai_flutter_agent</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="../ai_flutter_agent/">ai_flutter_agent</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <h5>ai_flutter_agent library</h5>
+  </div><!--/sidebar-offcanvas-right-->
+</main>
+<footer>
+  <span class="no-break">
+    ai_flutter_agent
+      0.1.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

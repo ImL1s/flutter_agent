@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Planner class from the ai_flutter_agent library, for the Dart programming language.">
+  <title>Planner class - ai_flutter_agent library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">ai_flutter_agent</a></li>
+    <li><a href="../ai_flutter_agent/">ai_flutter_agent.dart</a></li>
+    <li class="self-crumb">Planner class</li>
+  </ol>
+  <div class="self-name">Planner</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="ai_flutter_agent&#47;ai_flutter_agent-library-sidebar.html"
+    data-below-sidebar="ai_flutter_agent&#47;Planner-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">Planner</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Constructs LLM prompts from the current UI state and parses responses.</p>
+<p>The <a href="../ai_flutter_agent/Planner-class.html">Planner</a> is responsible for:</p>
+<ol>
+<li>Formatting the <a href="../ai_flutter_agent/WidgetDescriptor-class.html">WidgetDescriptor</a> tree into a readable text prompt</li>
+<li>Attaching available tool schemas from <a href="../ai_flutter_agent/ActionRegistry-class.html">ActionRegistry</a></li>
+<li>Sending the prompt to the <a href="../ai_flutter_agent/LLMClient-class.html">LLMClient</a></li>
+<li>Returning parsed <a href="../ai_flutter_agent/ActionDescriptor-class.html">ActionDescriptor</a> list</li>
+</ol>
+<p>When <a href="../ai_flutter_agent/Planner/conversationHistory.html">conversationHistory</a> is provided, the planner maintains multi-turn
+context by appending user prompts and assistant tool calls to the history.</p>
+</section>
+
+
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="Planner.new" class="callable">
+          <span class="name"><a href="../ai_flutter_agent/Planner/Planner.html">Planner</a></span><span class="signature">({<span class="parameter" id="-param-llmClient"><span>required</span> <span class="type-annotation"><a href="../ai_flutter_agent/LLMClient-class.html">LLMClient</a></span> <span class="parameter-name">llmClient</span>, </span><span class="parameter" id="-param-actionRegistry"><span>required</span> <span class="type-annotation"><a href="../ai_flutter_agent/ActionRegistry-class.html">ActionRegistry</a></span> <span class="parameter-name">actionRegistry</span>, </span><span class="parameter" id="-param-conversationHistory"><span class="type-annotation"><a href="../ai_flutter_agent/ConversationHistory-class.html">ConversationHistory</a>?</span> <span class="parameter-name">conversationHistory</span>, </span><span class="parameter" id="-param-retryExecutor"><span class="type-annotation"><a href="../ai_flutter_agent/RetryExecutor-class.html">RetryExecutor</a>?</span> <span class="parameter-name">retryExecutor</span>, </span><span class="parameter" id="-param-promptTemplate"><span class="type-annotation"><a href="../ai_flutter_agent/PromptTemplate-class.html">PromptTemplate</a>?</span> <span class="parameter-name">promptTemplate</span></span>})</span>
+        </dt>
+        <dd>
+          
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="actionRegistry" class="property">
+  <span class="name"><a href="../ai_flutter_agent/Planner/actionRegistry.html">actionRegistry</a></span>
+  <span class="signature">&#8594; <a href="../ai_flutter_agent/ActionRegistry-class.html">ActionRegistry</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="conversationHistory" class="property">
+  <span class="name"><a href="../ai_flutter_agent/Planner/conversationHistory.html">conversationHistory</a></span>
+  <span class="signature">&#8594; <a href="../ai_flutter_agent/ConversationHistory-class.html">ConversationHistory</a>?</span>
+  
+
+</dt>
+<dd>
+  Optional conversation history for multi-turn LLM interactions.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="llmClient" class="property">
+  <span class="name"><a href="../ai_flutter_agent/Planner/llmClient.html">llmClient</a></span>
+  <span class="signature">&#8594; <a href="../ai_flutter_agent/LLMClient-class.html">LLMClient</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="promptTemplate" class="property">
+  <span class="name"><a href="../ai_flutter_agent/Planner/promptTemplate.html">promptTemplate</a></span>
+  <span class="signature">&#8594; <a href="../ai_flutter_agent/PromptTemplate-class.html">PromptTemplate</a>?</span>
+  
+
+</dt>
+<dd>
+  Optional prompt template for customizing LLM prompts.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="retryExecutor" class="property">
+  <span class="name"><a href="../ai_flutter_agent/Planner/retryExecutor.html">retryExecutor</a></span>
+  <span class="signature">&#8594; <a href="../ai_flutter_agent/RetryExecutor-class.html">RetryExecutor</a>?</span>
+  
+
+</dt>
+<dd>
+  Optional retry executor for resilient LLM calls.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="buildPrompt" class="callable">
+  <span class="name"><a href="../ai_flutter_agent/Planner/buildPrompt.html">buildPrompt</a></span><span class="signature">(<wbr><span class="parameter" id="buildPrompt-param-uiState"><span class="type-annotation"><a href="../ai_flutter_agent/WidgetDescriptor-class.html">WidgetDescriptor</a></span> <span class="parameter-name">uiState</span>, </span><span class="parameter" id="buildPrompt-param-task"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">task</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Build the text prompt from the UI state and task.
+  
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="plan" class="callable">
+  <span class="name"><a href="../ai_flutter_agent/Planner/plan.html">plan</a></span><span class="signature">(<wbr>{<span class="parameter" id="plan-param-uiState"><span>required</span> <span class="type-annotation"><a href="../ai_flutter_agent/WidgetDescriptor-class.html">WidgetDescriptor</a></span> <span class="parameter-name">uiState</span>, </span><span class="parameter" id="plan-param-task"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">task</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../ai_flutter_agent/ActionDescriptor-class.html">ActionDescriptor</a></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Build a prompt from the current UI state and task, send to LLM,
+and return the parsed action descriptors.
+  
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">ai_flutter_agent</a></li>
+    <li><a href="../ai_flutter_agent/">ai_flutter_agent</a></li>
+    <li class="self-crumb">Planner class</li>
+</ol>
+
+    <h5>ai_flutter_agent library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    ai_flutter_agent
+      0.1.0
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

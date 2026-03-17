@@ -1,5 +1,11 @@
-## 0.1.0
+## 0.1.1
 
+- **Docs:** Major README overhaul with new framework icon, badges, accurate Quick Start guide, and categorized feature list.
+- **Docs:** Fixed GitHub URLs in `pubspec.yaml` and `README.md` to point to correct repository for pub.dev scoring.
+- **Chore:** Resolved 39 static analysis warnings (`prefer_const_constructors`, unused imports).
+- **Security:** Replaced hardcoded localhost IPs in E2E tests with environment variables.
+
+## 0.1.0
 Initial release with 25 features across 5 phases.
 
 ### Core

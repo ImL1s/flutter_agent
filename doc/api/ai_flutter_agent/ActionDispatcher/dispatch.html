@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the dispatch method from the ActionDispatcher class, for the Dart programming language.">
+  <title>dispatch method - ActionDispatcher class - ai_flutter_agent library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">ai_flutter_agent</a></li>
+    <li><a href="../../ai_flutter_agent/">ai_flutter_agent.dart</a></li>
+    <li><a href="../../ai_flutter_agent/ActionDispatcher-class.html">ActionDispatcher</a></li>
+    <li class="self-crumb">dispatch method</li>
+  </ol>
+  <div class="self-name">dispatch</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="ai_flutter_agent&#47;ActionDispatcher-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">dispatch</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
+<span class="name ">dispatch</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="dispatch-param-action"><span class="type-annotation"><a href="../../ai_flutter_agent/ActionDescriptor-class.html">ActionDescriptor</a></span> <span class="parameter-name">action</span>, </span></li>
+<li><span class="parameter" id="dispatch-param-root"><span class="type-annotation"><a href="../../ai_flutter_agent/WidgetDescriptor-class.html">WidgetDescriptor</a></span> <span class="parameter-name">root</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Dispatch an action to its handler.</p>
+<p>Returns <code>true</code> if the action was executed successfully,
+<code>false</code> if the node was not found or action is not registered.
+On failure, <a href="../../ai_flutter_agent/ActionDispatcher/lastError.html">lastError</a> contains the reason.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; dispatch(
+    ActionDescriptor action, WidgetDescriptor root) async {
+  lastError = null;
+
+  &#47;&#47; Check if action is registered
+  if (!registry.has(action.actionName)) {
+    lastError = &#39;Action &quot;${action.actionName}&quot; not registered&#39;;
+    return false;
+  }
+
+  &#47;&#47; Resolve target node by ID from args
+  final targetId = action.args[&#39;id&#39;] as String?;
+  if (targetId != null) {
+    final node = NodeResolver.resolve(root, Selector.byId(targetId));
+    if (node == null) {
+      lastError = &#39;Node with id &quot;$targetId&quot; not found in tree&#39;;
+      return false;
+    }
+  }
+
+  &#47;&#47; Execute the action
+  try {
+    await registry.execute(action.actionName, action.args);
+    return true;
+  } catch (e) {
+    lastError = e.toString();
+    return false;
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">ai_flutter_agent</a></li>
+    <li><a href="../../ai_flutter_agent/">ai_flutter_agent</a></li>
+    <li><a href="../../ai_flutter_agent/ActionDispatcher-class.html">ActionDispatcher</a></li>
+    <li class="self-crumb">dispatch method</li>
+</ol>
+
+    <h5>ActionDispatcher class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    ai_flutter_agent
+      0.1.0
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

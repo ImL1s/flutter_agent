@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="ai_flutter_agent API docs, for the Dart programming language.">
+  <title>ai_flutter_agent - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://github.com/ImL1s/flutter_agent">ai_flutter_agent package</a></li>
+  </ol>
+  <div class="self-name">ai_flutter_agent</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <p align="center">
+  <img src="assets/icon.png" width="120" alt="Flutter Agent icon">
+</p>
+<h1 align="center">ai_flutter_agent</h1>
+<p align="center">
+  <strong>Let LLMs operate Flutter app UIs through the Semantics tree.</strong><br>
+  Perceive → Plan → Execute → Verify — a complete agent loop with built-in safety.
+</p>
+<p align="center">
+  <a href="https://github.com/ImL1s/ai_flutter_agent/actions"><img src="https://img.shields.io/badge/tests-181%20passed-brightgreen" alt="Tests"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-BSD--3--Clause-blue" alt="License"></a>
+  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-%E2%89%A53.22-02569B?logo=flutter" alt="Flutter"></a>
+  <a href="https://dart.dev"><img src="https://img.shields.io/badge/Dart-%E2%89%A53.4-0175C2?logo=dart" alt="Dart"></a>
+</p>
+<hr>
+<h2 id="what-is-ai_flutter_agent">What is ai_flutter_agent?</h2>
+<p><code>ai_flutter_agent</code> is a Dart/Flutter package that bridges <strong>Large Language Models</strong> and <strong>Flutter UIs</strong>. It captures the live Semantics tree, sends it to an LLM, executes the returned tool-call actions, and verifies the UI changed — all in an automated loop.</p>
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>🤖 AI-powered UI testing — let an LLM explore and test your app</li>
+<li>♿ Accessibility automation — leverage the Semantics tree for smart interactions</li>
+<li>🔄 Macro recording &amp; replay — capture user flows and re-execute them</li>
+<li>🧪 E2E testing without brittle selectors — the LLM understands your UI</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Add to your <code>pubspec.yaml</code>:</p>
+<pre class="language-yaml"><code class="language-yaml">dependencies:
+  ai_flutter_agent:
+    git:
+      url: https://github.com/ImL1s/ai_flutter_agent.git
+</code></pre>
+<p>Then run:</p>
+<pre class="language-bash"><code class="language-bash">flutter pub get
+</code></pre>
+<h2 id="architecture">Architecture</h2>
+<pre class="language-dart"><code>┌─────────────────────────────────────────────────┐
+│                   AgentCore                      │
+│                                                  │
+│  1. Perceive   SemanticTreeWalker.capture()       │
+│       ↓        → WidgetDescriptor tree           │
+│  2. Plan       Planner.plan()                    │
+│       ↓        → LLMClient.requestActions()      │
+│  3. Execute    Executor.executeAll()              │
+│       ↓        → ActionRegistry (whitelist)       │
+│  4. Verify     Verifier.verify()                  │
+│       ↓        → VerificationDetail (diff)        │
+│  (unchanged? retry up to maxRetries, then error)  │
+└─────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="quick-start">Quick Start</h2>
+<pre class="language-dart"><code class="language-dart">import 'package:ai_flutter_agent/ai_flutter_agent.dart';
+
+// 1. Wrap your app to enable Semantics
+runApp(
+  AgentOverlayWidget(
+    enabled: true,
+    child: MyApp(),
+  ),
+);
+
+// 2. Register actions
+final registry = ActionRegistry();
+BuiltInActions.registerDefaults(registry);
+
+// 3. Set up LLM client (OpenAI-compatible)
+final llm = OpenAILLMClient(
+  apiKey: 'your-api-key',  // or use env var
+  model: 'gpt-4o',
+  // baseUrl: 'http://localhost:1234/v1', // for local models
+);
+
+// 4. Build components
+final auditLog = AuditLog();
+final planner = Planner(llmClient: llm, actionRegistry: registry);
+final executor = Executor(actionRegistry: registry, auditLog: auditLog);
+final verifier = Verifier(treeWalker: SemanticTreeWalker());
+
+// 5. Create and run agent
+final agent = AgentCore(
+  config: AgentConfig(maxSteps: 10),
+  treeWalker: SemanticTreeWalker(),
+  planner: planner,
+  executor: executor,
+  verifier: verifier,
+);
+
+await agent.run('Fill in the login form and tap Submit');
+
+// Check results
+print(agent.state.status);       // AgentStatus.completed
+print(auditLog.entries.length);  // number of actions executed
+</code></pre>
+<h2 id="key-features">Key Features</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Category</th>
+<th align="left">Feature</th>
+<th align="left">Class</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Core</strong></td>
+<td align="left">UI Perception</td>
+<td align="left"><code>SemanticTreeWalker</code></td>
+<td align="left">Captures live semantics tree as <code>WidgetDescriptor</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Node Resolution</td>
+<td align="left"><code>NodeResolver</code> + <code>Selector</code></td>
+<td align="left">Find nodes by id, label, role, or key</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Action Registry</td>
+<td align="left"><code>ActionRegistry</code></td>
+<td align="left">Whitelist of allowed actions with OpenAI tool schemas</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Built-in Actions</td>
+<td align="left"><code>BuiltInActions</code></td>
+<td align="left">tap, longPress, scroll, setText, focus, dismiss</td>
+</tr>
+<tr>
+<td align="left"><strong>LLM</strong></td>
+<td align="left">OpenAI Client</td>
+<td align="left"><code>OpenAILLMClient</code></td>
+<td align="left">HTTP-based, supports any OpenAI-compatible endpoint</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Streaming</td>
+<td align="left"><code>StreamingLLMClient</code></td>
+<td align="left">Stream-based LLM responses</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Isolate Execution</td>
+<td align="left"><code>IsolateLLMClient</code></td>
+<td align="left">Run LLM calls off the main thread</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Conversation History</td>
+<td align="left"><code>ConversationHistory</code></td>
+<td align="left">Multi-turn context with FIFO eviction</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Retry</td>
+<td align="left"><code>RetryExecutor</code></td>
+<td align="left">Exponential backoff for resilient LLM calls</td>
+</tr>
+<tr>
+<td align="left"><strong>Safety</strong></td>
+<td align="left">Privacy Masking</td>
+<td align="left"><code>SensitiveDataMasker</code></td>
+<td align="left">Strip emails, phones, credit cards before LLM</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Consent Gate</td>
+<td align="left"><code>ConsentHandler</code></td>
+<td align="left">User approval before executing actions</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Action Timeout</td>
+<td align="left"><code>Executor</code></td>
+<td align="left">Per-action timeout enforcement</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Action Confirmation</td>
+<td align="left"><code>Executor</code></td>
+<td align="left">Per-action confirmation callbacks</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Audit Log</td>
+<td align="left"><code>AuditLog</code></td>
+<td align="left">Every action recorded (success + failure)</td>
+</tr>
+<tr>
+<td align="left"><strong>DX</strong></td>
+<td align="left">Prompt Templates</td>
+<td align="left"><code>PromptTemplate</code></td>
+<td align="left">Customizable prompt formatting</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Verification Diff</td>
+<td align="left"><code>VerificationDetail</code></td>
+<td align="left">Structured tree diff for change detection</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Macro Recording</td>
+<td align="left"><code>MacroRecorder</code></td>
+<td align="left">Record &amp; replay action sequences with serialization</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Debug Events</td>
+<td align="left"><code>DebugLogStream</code></td>
+<td align="left">Stream events for debug overlay</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Lifecycle Hooks</td>
+<td align="left"><code>AgentCallbacks</code></td>
+<td align="left">onStepStart, onActionExecuted, onComplete, onError</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Widget Wrapper</td>
+<td align="left"><code>AgentOverlayWidget</code></td>
+<td align="left">Manages semantics lifecycle automatically</td>
+</tr>
+</tbody>
+</table>
+<h2 id="advanced-usage">Advanced Usage</h2>
+<h3 id="custom-prompt-template">Custom Prompt Template</h3>
+<pre class="language-dart"><code class="language-dart">final planner = Planner(
+  llmClient: llm,
+  actionRegistry: registry,
+  promptTemplate: CustomPromptTemplate(
+    template: 'UI:\n{ui}\n\nTask: {task}\n\nTools: {actions}',
+  ),
+);
+</code></pre>
+<h3 id="privacy-aware-agent">Privacy-Aware Agent</h3>
+<pre class="language-dart"><code class="language-dart">final agent = AgentCore(
+  config: AgentConfig(maxSteps: 10),
+  treeWalker: SemanticTreeWalker(),
+  planner: planner,
+  executor: executor,
+  verifier: verifier,
+  sensitiveDataMasker: SensitiveDataMasker(), // strips PII automatically
+  consentHandler: ConsentHandler(
+    onConsentRequired: (actions) async =&gt; true, // your approval logic
+  ),
+);
+</code></pre>
+<h3 id="macro-recording">Macro Recording</h3>
+<pre class="language-dart"><code class="language-dart">final recorder = MacroRecorder();
+recorder.record(const ActionDescriptor(actionName: 'tap', args: {'id': '1'}));
+recorder.record(const ActionDescriptor(actionName: 'setText', args: {'id': '2', 'text': 'hello'}));
+final macro = recorder.toMacro('Login Flow');
+
+// Serialize to JSON for storage
+final jsonString = MacroStore.serialize(macro);
+
+// Restore later
+final restored = MacroStore.deserialize(jsonString);
+</code></pre>
+<h3 id="local-llm-support">Local LLM Support</h3>
+<pre class="language-dart"><code class="language-dart">final llm = OpenAILLMClient(
+  apiKey: 'not-needed',
+  model: 'your-local-model',
+  baseUrl: 'http://localhost:1234/v1', // LM Studio, Ollama, etc.
+);
+</code></pre>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li><strong>Flutter</strong> ≥ 3.22.0</li>
+<li><strong>Dart</strong> ≥ 3.4.0</li>
+<li>Your app widgets must have <code>Semantics</code> annotations for the agent to perceive them</li>
+</ul>
+<h2 id="testing">Testing</h2>
+<pre class="language-bash"><code class="language-bash">flutter test           # 181 tests
+flutter analyze        # Static analysis
+</code></pre>
+<h2 id="license">License</h2>
+<p><a href="LICENSE">BSD 3-Clause</a></p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="ai_flutter_agent">
+  <span class="name"><a href="ai_flutter_agent/">ai_flutter_agent</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+        </dl>
+      </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="https://github.com/ImL1s/flutter_agent">ai_flutter_agent package</a></li>
+</ol>
+
+    <h5 class="hidden-xs"><span class="package-name">ai_flutter_agent</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="ai_flutter_agent/">ai_flutter_agent</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+</main>
+<footer>
+  <span class="no-break">
+    ai_flutter_agent
+      0.1.0
+  </span>
+  
+</footer>
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
